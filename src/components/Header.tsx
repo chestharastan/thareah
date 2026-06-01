@@ -5,6 +5,7 @@
 
 import { useState } from 'react';
 import { Sparkles, Menu, X } from 'lucide-react';
+import thorLogo from '../assets/images/thor.svg';
 
 interface HeaderProps {
   onRoomSelect?: (room: string) => void;
@@ -42,7 +43,7 @@ export default function Header({ onRoomSelect, activeRoom = 'overview' }: Header
           className="flex items-center gap-2 focus:outline-none cursor-pointer group"
         >
           <img
-            src="/src/assets/images/thor.svg"
+            src={thorLogo}
             alt="Thareah logo"
             width={28}
             height={28}

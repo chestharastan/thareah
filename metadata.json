@@ -1,0 +1,8 @@
+{
+  "name": "Thareah — Digital & Space AI Portfolio",
+  "description": "An elite architectural-themed design portfolio inspired by Japan's flagship retail display designers, representing Thareah's specialized Data, Vision, and AI Engineering projects with an interactive AI Sandbox.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -15,7 +15,7 @@ export default function PortfolioHub({ onZoomIn }: PortfolioHubProps) {
     {
       id: 'design' as const,
       num: '01',
-      title: 'GRAPHIC DESIGN & ARCH-VMD',
+      title: 'GRAPHIC DESIGN & ARCH-LAYOUT',
       subtitle: 'SWISS TYPOGRAPHY & SPATIAL SANDBOX',
       desc: 'Interactive visual merchandising cockpit adjusting parametric font sizes, tracking metrics, margins, and layout geometry inspired by brutalist minimalism.',
       image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
@@ -34,17 +34,17 @@ export default function PortfolioHub({ onZoomIn }: PortfolioHubProps) {
       tag: 'BACKEND ARCHITECTURE',
       accent: 'border-blue-400/50 text-blue-500 bg-blue-50/20'
     },
-    {
-      id: 'ai' as const,
-      num: '03',
-      title: 'INTELLIGENT AI SYSTEMS',
-      subtitle: 'HEALTH XAI CERTIFICATE MATRIX',
-      desc: 'Suite containing clinical health predictor charts, SHAP interpretability lattices, deep Khmer script OCR transcription bounds, and dense vector RAG consoles.',
-      image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80',
-      icon: Cpu,
-      tag: 'NEURAL NETWORKS',
-      accent: 'border-emerald-400/50 text-emerald-500 bg-emerald-50/20'
-    }
+    // {
+    //   id: 'ai' as const,
+    //   num: '03',
+    //   title: 'INTELLIGENT AI SYSTEMS',
+    //   subtitle: 'HEALTH XAI CERTIFICATE MATRIX',
+    //   desc: 'Suite containing clinical health predictor charts, SHAP interpretability lattices, deep Khmer script OCR transcription bounds, and dense vector RAG consoles.',
+    //   image: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80',
+    //   icon: Cpu,
+    //   tag: 'NEURAL NETWORKS',
+    //   accent: 'border-emerald-400/50 text-emerald-500 bg-emerald-50/20'
+    // }
   ];
 
   return (
@@ -53,7 +53,7 @@ export default function PortfolioHub({ onZoomIn }: PortfolioHubProps) {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-neutral-200/55 pb-6 mb-8 select-none">
         <div className="space-y-1">
           <span className="font-mono text-[9px] text-amber-600 font-extrabold uppercase tracking-widest block">
-            CHAMBER_04 // DECISION CO-PILOTS
+            CHAMBER_04 // DECISION STUDIO
           </span>
           <h2 className="font-display text-4xl font-light text-neutral-950 tracking-tight leading-none">
             Interactive Portfolio Hub
@@ -117,7 +117,7 @@ export default function PortfolioHub({ onZoomIn }: PortfolioHubProps) {
                 <div className="border-t border-neutral-100 pt-4 flex items-center justify-between text-[10px] font-mono select-none">
                   <div className="flex items-center gap-1 text-neutral-400 group-hover:text-neutral-950 transition-colors">
                     <Icon className="w-4 h-4" />
-                    <span>CO-PILOT DISPATCH</span>
+                    <span>DESIGN DISPATCH</span>
                   </div>
                   <span className="flex items-center gap-1 font-extrabold text-neutral-950 group-hover:text-amber-500 transition-colors">
                     ZOOM IN

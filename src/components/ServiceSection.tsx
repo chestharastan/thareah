@@ -20,10 +20,10 @@ interface ServiceItem {
 
 const SERVICES: ServiceItem[] = [
   {
-    id: "vmd",
+    id: "design",
     icon: Layers,
     tag: "CURATION & DESIGN",
-    title: "Visual Merchandising Design System",
+    title: "Spatial Design System",
     phrase: "空間を翻訳し、美学としてのブランドを提示する。",
     description: "Designing high-fidelity spatial visual layouts. Seamlessly blending tactile paper-textured UI, editorial type treatments, and physics-calculated display simulations. Best matched for premium brands looking to stand out on high-dpi displays.",
     deliverables: ["Dynamic Grid Layouts", "Acellular Color Profiles", "Textured Cream & Amber Canvases"],
@@ -43,7 +43,7 @@ const SERVICES: ServiceItem[] = [
     id: "ai-systems",
     icon: Sparkles,
     tag: "INTELLIGENT INTEGRATION",
-    title: "Human-AI Cognitive Co-Pilots",
+    title: "Human-AI Cognitive Systems",
     phrase: "データの背景にあるコンテキストをインテリジェントに抽出。",
     description: "Developing intelligent dashboards, predictive data analysis nodes, and custom AI inference simulations. Bridging advanced model capabilities with human operators through natural-language terminal shells.",
     deliverables: ["Custom predictive pipelines", "Localized OCR visualizers", "Context-aware RAG interfaces"],
@@ -53,7 +53,7 @@ const SERVICES: ServiceItem[] = [
 
 export default function ServiceSection() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
-  const [selectedService, setSelectedService] = useState<string | null>("vmd");
+  const [selectedService, setSelectedService] = useState<string | null>("design");
 
   return (
     <div className="w-full bg-[#faf8f4] py-16 md:py-24 border-t border-neutral-200">

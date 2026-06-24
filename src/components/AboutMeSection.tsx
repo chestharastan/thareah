@@ -25,7 +25,7 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
       case 'diabetes-xai': return { room: 'ai', subTab: 'diabetes' };
       case 'khmer-ocr': return { room: 'ai', subTab: 'ocr' };
       case 'kb-rag': return { room: 'ai', subTab: 'rag' };
-      case 'vmd-sandbox': return { room: 'design' };
+      case 'design-sandbox': return { room: 'design' };
       case 'pearl-editorial': return { room: 'design' };
       case 'banking-dwh': return { room: 'webdev' };
       case 'nlp-model-dashboard': return { room: 'webdev' };

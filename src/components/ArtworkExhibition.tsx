@@ -395,7 +395,7 @@ export default function ArtworkExhibition() {
                   onClick={() => setSelectedArtwork(null)}
                   className="mt-3 flex items-center gap-1.5 text-[9px] font-mono text-neutral-950 hover:text-amber-500 font-extrabold uppercase"
                 >
-                  DISMISS DETAIL CO-PILOT
+                  CLOSE DETAIL PANEL
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>

@@ -44,7 +44,7 @@ export interface TimelineEvent {
   description: string;
 }
 
-export interface VMDElement {
+export interface ExhibitionElement {
   id: string;
   name: string;
   type: 'pedestal' | 'lighting' | 'sculpture' | 'text-panel' | 'mannequin' | 'screen' | 'prop';
@@ -55,11 +55,11 @@ export interface VMDElement {
   description: string;
 }
 
-export interface VMDLayout {
+export interface ExhibitionLayout {
   theme: string;
   inspiration: string;
   lightingMood: string;
   colorScheme: string[];
-  elements: VMDElement[];
+  elements: ExhibitionElement[];
   curatorsNotes: string;
 }

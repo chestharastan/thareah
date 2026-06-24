@@ -42,10 +42,10 @@ export default function ContactSection() {
       // Add a welcoming default placeholder message so it's not looking empty!
       const welcomeMsg: InquiryMessage = {
         id: "sys-welcome",
-        name: "Welcome Co-Pilot",
+        name: "Welcome",
         email: "dohloot@gmail.com",
-        category: "Visual Presentation / VMD",
-        message: "Hello! Thank you for looking through our portfolio. Feel free to type anything in the fields above and hit 'Transmit Inquiry' to test the persistent terminal log below.",
+        category: "General Conversation",
+        message: "Hello! Thank you for looking through the portfolio. Feel free to type anything in the fields above and hit 'Transmit Inquiry' to test the persistent terminal log below.",
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + " UTC",
         isUrgent: false
       };
@@ -107,28 +107,27 @@ export default function ContactSection() {
     <div className="w-full bg-[#fcfbf9] py-16 md:py-24 border-t border-neutral-200">
       <div className="max-w-6xl mx-auto px-6 md:px-12 select-text">
         {/* SECTION LABELING */}
-        <div className="space-y-3 mb-16">
+        <div className="space-y-3 mb-16 text-center">
           <span className="font-mono text-[9px] md:text-[10px] text-amber-600 font-extrabold block uppercase tracking-widest">
             CHAMBER_06 // SECURE CONTACT GATEWAY
           </span>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="flex flex-col items-center gap-6">
             <h2 
               className="font-display text-4xl md:text-5xl font-light text-neutral-950 tracking-tight leading-none"
               style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
             >
               Get in Touch.
             </h2>
-            <p className="text-neutral-500 font-mono text-[10px] md:text-xs leading-relaxed max-w-sm">
+            {/* <p className="text-neutral-500 font-mono text-[10px] md:text-xs leading-relaxed max-w-sm">
               Transmit a direct inquiry to Thareah's operational terminal below. Logs are parsed and kept in persistent local storage.
-            </p>
+            </p> */}
           </div>
         </div>
 
-        {/* DOUBLE COLUMN TERMINAL LAYOUT */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-start">
-          {/* LEFT: FORM BOX */}
-          <form onSubmit={handleFormSubmit} className="lg:col-span-6 bg-white p-6 md:p-8 border border-neutral-200/80 rounded-xs space-y-5 shadow-xs">
-            <span className="font-mono text-[8px] text-neutral-400 font-bold uppercase block border-b border-neutral-100 pb-2.5">
+        {/* SINGLE COLUMN TERMINAL LAYOUT */}
+        <div className="flex justify-center">
+          <form onSubmit={handleFormSubmit} className="w-full max-w-2xl bg-white p-6 md:p-8 border border-neutral-200/80 rounded-xs space-y-5 shadow-xs">
+            <span className="font-mono text-[8px] text-neutral-400 font-bold uppercase block border-b border-neutral-100 pb-2.5 text-center">
               NEW TRANSACTION FORM // SECURE PORT_8080
             </span>
 
@@ -191,7 +190,7 @@ export default function ContactSection() {
                 className="w-full bg-[#fafafd] border border-neutral-200 focus:border-amber-500 focus:ring-1 focus:ring-amber-500 rounded-sm px-3 py-2.5 text-xs font-sans text-neutral-800 outline-none cursor-pointer transition-colors"
               >
                 <option value="Full-Stack Web Dev">Full-Stack Web Dev & UI systems</option>
-                <option value="Visual Presentation / VMD">Visual Presentation / Space Merchandising</option>
+                <option value="Visual Presentation / Space Merchandising">Visual Presentation / Space Merchandising</option>
                 <option value="Intelligent AI systems">Cognitive AI systems & OCR Vision</option>
                 <option value="General Conversation">General Partnership / Conversation</option>
               </select>
@@ -239,98 +238,6 @@ export default function ContactSection() {
               {isSubmitting ? 'Transmitting data payload...' : 'Transmit Inquiry'}
             </button>
           </form>
-
-          {/* RIGHT: LOCAL TERMINAL LOG */}
-          <div className="lg:col-span-6 bg-[#161512] text-[#e2dfd9] p-6 rounded-xs border border-neutral-900 shadow-inner space-y-4 font-mono select-text">
-            <div className="flex items-center justify-between border-b border-neutral-800 pb-3">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
-                <span className="text-[10px] font-bold tracking-wider text-amber-500 uppercase">
-                  OPERATIONAL INQUIRY LOGS
-                </span>
-                <span className="text-[7.5px] text-neutral-500">[{messages.length} RECORDED]</span>
-              </div>
-              <button 
-                onClick={handleClearLogs}
-                className="p-1 px-2 border border-neutral-800 rounded-sm text-[8px] hover:text-[#fff] hover:bg-neutral-900/60 transition-colors flex items-center gap-1 cursor-pointer"
-                title="Wipe Logs"
-              >
-                <Trash2 className="w-3 h-3 text-red-400" />
-                RESET LOGS
-              </button>
-            </div>
-
-            {/* List of received inquiries */}
-            <div className="space-y-2.5 max-h-[350px] overflow-y-auto custom-scrollbar pr-1.5 text-left">
-              {messages.length === 0 ? (
-                <div className="py-12 text-center text-neutral-500 space-y-2">
-                  <FileText className="w-8 h-8 text-neutral-600 mx-auto animate-pulse" />
-                  <p className="text-[9px] uppercase tracking-wider">No active transmissions stored on loop.</p>
-                </div>
-              ) : (
-                messages.map((msg) => {
-                  const isExpanded = expandedId === msg.id;
-                  return (
-                    <div 
-                      key={msg.id}
-                      className={`p-3 border rounded-xs transition-all ${
-                        isExpanded 
-                          ? 'bg-[#22211d] border-amber-600/60' 
-                          : 'bg-[#1c1a16] border-neutral-800 hover:border-neutral-700 cursor-pointer'
-                      }`}
-                      onClick={() => setExpandedId(isExpanded ? null : msg.id)}
-                    >
-                      <div className="flex items-center justify-between text-[9px] mb-1">
-                        <div className="flex items-center gap-1.5">
-                          <span className="font-sans font-bold text-neutral-200">
-                            {msg.name}
-                          </span>
-                          <span className="text-neutral-500 font-mono">
-                            &lt;{msg.email}&gt;
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-1 text-neutral-400">
-                          <Calendar className="w-3 h-3 text-neutral-500" />
-                          <span>{msg.timestamp}</span>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center justify-between text-[8px] mt-1 text-amber-500/80">
-                        <span>PORTAL: {msg.category}</span>
-                        {msg.isUrgent && (
-                          <span className="bg-red-900/60 text-red-200 border border-red-500/30 px-1 py-0.2 rounded-xs uppercase leading-none font-extrabold tracking-widest animate-pulse">
-                            URGENT
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Msg Details */}
-                      <div className={`mt-2.5 text-[10px] leading-relaxed font-sans text-neutral-300 border-t border-neutral-800/60 pt-2 ${
-                        isExpanded ? 'block' : 'line-clamp-1 opacity-70 text-[9px]'
-                      }`}>
-                        {msg.message}
-                      </div>
-
-                      {!isExpanded && (
-                        <div className="text-center text-[7px] text-neutral-500 hover:text-neutral-400 mt-1 cursor-pointer select-none font-mono">
-                          [ CLICK TO EXPAND METADATA ]
-                        </div>
-                      )}
-                    </div>
-                  );
-                })
-              )}
-            </div>
-
-            {/* Instruction Footer */}
-            <div className="pt-2 border-t border-neutral-850 flex items-center justify-between text-[8px] text-neutral-500">
-              <span className="flex items-center gap-1">
-                <HelpCircle className="w-3 h-3" />
-                DURABLE CLIENT TRANSACTION STORAGE ACTIVE
-              </span>
-              <span>TYPE: READ_WRITE</span>
-            </div>
-          </div>
         </div>
       </div>
     </div>

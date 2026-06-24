@@ -71,7 +71,7 @@ export const PROJECTS: Project[] = [
     ]
   },
   {
-    id: "vmd-sandbox",
+    id: "design-sandbox",
     title: "Interactive Exhibition Sandbox",
     subtitle: "Visual Merchandising & Curation Logic Engine",
     category: "Spatial Design / Interaction CSS",

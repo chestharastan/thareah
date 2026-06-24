@@ -74,14 +74,14 @@ export default function Header({ onRoomSelect, activeRoom = 'overview' }: Header
             );
           })}
           
-          <button
+          {/* <button
             id="header-cta-btn"
             onClick={() => handleNavClick('design')}
             className="flex items-center gap-1.5 bg-amber-500 hover:bg-amber-600 text-neutral-950 font-mono text-[10px] tracking-wider uppercase px-3.5 py-1.5 rounded-sm transition-colors cursor-pointer font-bold"
           >
             <Sparkles className="w-3.5 h-3.5" />
-            VMD CO-PILOT
-          </button>
+            DESIGN
+          </button> */}
         </nav>
 
         {/* MOBILE TRIGGER */}
@@ -90,7 +90,7 @@ export default function Header({ onRoomSelect, activeRoom = 'overview' }: Header
             onClick={() => handleNavClick('design')}
             className="bg-amber-500 text-neutral-900 font-mono text-[9px] tracking-wider uppercase px-3 py-1.5 rounded-sm cursor-pointer font-bold"
           >
-            VMD
+            DESIGN
           </button>
           
           <button

@@ -12,7 +12,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const DEFAULT_PORT = Number(process.env.PORT ?? 3000);
 
 app.use(express.json());
 
@@ -42,8 +42,8 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', time: new Date().toISOString() });
 });
 
-// 2. API: Generate Visual Merchandising (VMD) Exhibition Space Layout for Thareah's Portfolio
-app.post('/api/gemini/generate-vmd', async (req, res) => {
+// 2. API: Generate exhibition space layout for Thareah's portfolio
+app.post('/api/gemini/generate-layout', async (req, res) => {
   const { prompt } = req.body;
 
   if (!prompt) {
@@ -55,7 +55,7 @@ app.post('/api/gemini/generate-vmd', async (req, res) => {
     
     const response = await ai.models.generateContent({
       model: 'gemini-3.5-flash',
-      contents: `You are a Japanese Visual Merchandising Director (VMD) for Pearl Idea Co., Ltd. 
+      contents: `You are a Japanese exhibition design director for Pearl Idea Co., Ltd. 
 Develop an exquisite, high-end museum or retail display window exhibition layout corresponding to the prompt: "${prompt}".
 Connect this prompt conceptually to digital structures, AI, and architectural beauty. 
 Position items gracefully on a 2D floor grid (X from 10 to 90, Y from 10 to 90) representing a boutique designer showcase.
@@ -122,7 +122,7 @@ Return the layout detailing the lighting mood, color palette, elements, and cura
     return res.json(parsedResult);
 
   } catch (error: any) {
-    console.error("Gemini VMD generation failed:", error);
+    console.error("Layout generation failed:", error);
     
     // Fallback: Provide a stunning mock layout if API key is missing or call fails
     const fallbackLayouts: Record<string, any> = {
@@ -197,9 +197,23 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running at http://0.0.0.0:${PORT}`);
+  const startListening = (port: number): Promise<number> => new Promise((resolve, reject) => {
+    const server = app.listen(port, '0.0.0.0', () => {
+      resolve(port);
+    });
+
+    server.on('error', (error: NodeJS.ErrnoException) => {
+      if (error.code === 'EADDRINUSE') {
+        resolve(startListening(port + 1));
+        return;
+      }
+
+      reject(error);
+    });
   });
+
+  const port = await startListening(DEFAULT_PORT);
+  console.log(`Server running at http://0.0.0.0:${port}`);
 }
 
 startServer();

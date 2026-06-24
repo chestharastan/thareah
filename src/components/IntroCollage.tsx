@@ -81,7 +81,7 @@ const SLOT_POOLS = [
     {
       url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
       alt: "Brutalist Space Architectural Plan",
-      label: "PROJECT // VMD SANDBOX",
+      label: "PROJECT // DESIGN SANDBOX",
       targetRoom: "sandbox"
     },
     {
@@ -366,7 +366,7 @@ export default function IntroCollage({ zoom, onNavigateToRoom }: IntroCollagePro
             onClick={() => onNavigateToRoom?.('design')}
             className="border border-neutral-900 bg-neutral-950 text-white rounded-full px-4 py-1 hover:bg-amber-500 hover:text-neutral-950 transition-colors cursor-pointer text-[10px] font-mono"
           >
-            ENTRY CO-PILOT
+            ENTRY GUIDE
           </button>
         </div>
 
@@ -464,7 +464,7 @@ export default function IntroCollage({ zoom, onNavigateToRoom }: IntroCollagePro
             onClick={() => onNavigateToRoom?.('design')}
             className="border border-neutral-900 bg-neutral-950 text-white rounded-full px-3.5 py-1 hover:bg-neutral-800 transition-colors cursor-pointer text-[9px] font-mono"
           >
-            ENTRY CO-PILOT
+            ENTRY GUIDE
           </button>
         </div>
 

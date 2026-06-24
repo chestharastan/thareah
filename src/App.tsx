@@ -7,7 +7,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowLeft } from "lucide-react";
 
-import { VMDLayout } from "./types";
+import { ExhibitionLayout } from "./types";
 import { SKILL_CATEGORIES, RESEARCH_PAPERS, TIMELINE } from "./data";
 
 import Header from "./components/Header";
@@ -44,7 +44,7 @@ export default function App() {
   const [activeResearchId, setActiveResearchId] = useState<string | null>(
     "diabetes-predict-low-resource",
   );
-  const [currentVMDTheme, setCurrentVMDTheme] = useState<string>(
+  const [currentDesignTheme, setCurrentDesignTheme] = useState<string>(
     "ARCH-AI SYNERGY EXPO",
   );
 
@@ -192,8 +192,8 @@ export default function App() {
     ? Math.min(1, (screenWidth - 20) / 1120)
     : 1;
 
-  const handleVMDGenerated = (layout: VMDLayout) => {
-    setCurrentVMDTheme(layout.theme);
+  const handleLayoutGenerated = (layout: ExhibitionLayout) => {
+    setCurrentDesignTheme(layout.theme);
   };
 
   // Direct DOM style updates — zero React re-renders during the scroll transition
@@ -934,7 +934,7 @@ export default function App() {
         return (
           <div className="w-full h-full overflow-hidden">
             <div className="interactive-cockpit h-full">
-              <ExhibitionSandbox onLayoutGenerated={handleVMDGenerated} />
+              <ExhibitionSandbox onLayoutGenerated={handleLayoutGenerated} />
             </div>
           </div>
         );

@@ -6,21 +6,21 @@
 import { useState, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, MoveRight, Layers, HelpCircle, Eye, RefreshCw, Box, Palette, LayoutGrid } from 'lucide-react';
-import { VMDLayout, VMDElement } from '../types';
+import { ExhibitionLayout, ExhibitionElement } from '../types';
 import ArtworkExhibition from './ArtworkExhibition';
 
 interface ExhibitionSandboxProps {
-  onLayoutGenerated?: (layout: VMDLayout) => void;
+  onLayoutGenerated?: (layout: ExhibitionLayout) => void;
 }
 
 export default function ExhibitionSandbox({ onLayoutGenerated }: ExhibitionSandboxProps) {
   const [activeMode, setActiveMode] = useState<'gallery' | 'sandbox'>('gallery');
   const [prompt, setPrompt] = useState('');
   const [loading, setLoading] = useState(false);
-  const [activeElement, setActiveElement] = useState<VMDElement | null>(null);
+  const [activeElement, setActiveElement] = useState<ExhibitionElement | null>(null);
   
   // High-fidelity pre-curated default layout matching Pearl Idea aesthetic
-  const [layout, setLayout] = useState<VMDLayout>({
+  const [layout, setLayout] = useState<ExhibitionLayout>({
     theme: "ARCH-AI SYNERGY EXPO",
     inspiration: "A balanced intersection of natural physical materials and fluid artificial intelligence algorithms, framed inside a structured boutique display window.",
     lightingMood: "Soft Warm Spotlight at 30° paired with high-contrast cybernetic neon borders",
@@ -88,7 +88,7 @@ export default function ExhibitionSandbox({ onLayoutGenerated }: ExhibitionSandb
     setActiveElement(null);
 
     try {
-      const response = await fetch('/api/gemini/generate-vmd', {
+      const response = await fetch('/api/gemini/generate-layout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: prompt.trim() })
@@ -98,13 +98,13 @@ export default function ExhibitionSandbox({ onLayoutGenerated }: ExhibitionSandb
         throw new Error('Network response error');
       }
 
-      const data: VMDLayout = await response.json();
+      const data: ExhibitionLayout = await response.json();
       setLayout(data);
       if (onLayoutGenerated) {
         onLayoutGenerated(data);
       }
     } catch (error) {
-      console.error("VMD generation failed:", error);
+      console.error("Layout generation failed:", error);
     } finally {
       setLoading(false);
     }
@@ -163,7 +163,7 @@ export default function ExhibitionSandbox({ onLayoutGenerated }: ExhibitionSandb
             }`}
           >
             <Box className="w-3.5 h-3.5" />
-            AI VMD Space Director
+            AI Space Director
           </button>
         </div>
       </div>
@@ -191,7 +191,7 @@ export default function ExhibitionSandbox({ onLayoutGenerated }: ExhibitionSandb
               transition={{ duration: 0.3, ease: 'easeOut' }}
               className="absolute inset-0 w-full h-full"
             >
-              <div id="vmd-sandbox-section" className="w-full h-full bg-white overflow-y-auto lg:overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+              <div id="design-sandbox-section" className="w-full h-full bg-white overflow-y-auto lg:overflow-hidden grid grid-cols-1 lg:grid-cols-12">
                 {/* LEFT PANEL: CONSOLE CONTROLS */}
                 <div className="p-6 lg:p-8 lg:col-span-5 border-b lg:border-b-0 lg:border-r border-neutral-100 flex flex-col justify-between">
                   <div>
@@ -281,7 +281,7 @@ export default function ExhibitionSandbox({ onLayoutGenerated }: ExhibitionSandb
                   {/* Fine background details to reinforce Swiss Engineering layout */}
                   <div className="absolute inset-0 bg-blueprint opacity-60 pointer-events-none"></div>
                   <div className="absolute top-4 left-4 font-mono text-[9px] text-neutral-400 pointer-events-none select-none">
-                    SYSTEM: VMD-RENDERER-V2 // GRID: 100x100
+                    SYSTEM: DESIGN-RENDERER-V2 // GRID: 100x100
                   </div>
                   <div className="absolute bottom-4 right-4 font-mono text-[9px] text-neutral-400 pointer-events-none select-none">
                     THEME: {layout.theme}
@@ -336,7 +336,7 @@ export default function ExhibitionSandbox({ onLayoutGenerated }: ExhibitionSandb
 
                         return (
                           <motion.button
-                            id={`vmd-element-${el.id}`}
+                            id={`design-element-${el.id}`}
                             key={el.id}
                             style={{ left: `${el.x}%`, top: `${el.y}%`, transform: 'translate(-50%, -50%)' }}
                             className="absolute z-10 p-0 rounded-full border border-neutral-300 shadow-md flex items-center justify-center cursor-pointer transition-all focus:outline-none"
@@ -378,7 +378,7 @@ export default function ExhibitionSandbox({ onLayoutGenerated }: ExhibitionSandb
                   </div>
 
                   {/* ELEMENT DETAIL CARD */}
-                  <div id="vmd-element-detail-card" className="mt-4 h-24 relative bg-white border border-neutral-200/50 rounded-sm p-4 flex items-center justify-between">
+                  <div id="design-element-detail-card" className="mt-4 h-24 relative bg-white border border-neutral-200/50 rounded-sm p-4 flex items-center justify-between">
                     <AnimatePresence mode="wait">
                       {activeElement ? (
                         <motion.div

@@ -34,6 +34,7 @@ const getRoomGroupKey = (room: string) => {
 };
 
 export default function App() {
+  const PORTFOLIO_SCROLL_JOURNEY = 1800;
   const [activeRoom, setActiveRoom] = useState<string>("overview");
   const [activeSubTab, setActiveSubTab] = useState<string>("");
   const [isHoveredBack, setIsHoveredBack] = useState<boolean>(false);
@@ -73,13 +74,13 @@ export default function App() {
       isProgrammaticScrollRef.current = false;
       const portfolioEl = document.getElementById("portfolio-section");
       if (portfolioEl) {
-        node.scrollTop = portfolioEl.offsetTop + 3800;
+        node.scrollTop = portfolioEl.offsetTop + PORTFOLIO_SCROLL_JOURNEY;
         applyScrollProgress(1, 1);
       } else {
         setTimeout(() => {
           const portfolioElRetry = document.getElementById("portfolio-section");
           if (portfolioElRetry) {
-            node.scrollTop = portfolioElRetry.offsetTop + 3800;
+            node.scrollTop = portfolioElRetry.offsetTop + PORTFOLIO_SCROLL_JOURNEY;
             applyScrollProgress(1, 1);
           }
         }, 50);
@@ -244,7 +245,7 @@ export default function App() {
     // High fidelity scroll-linked circle zoom transition mapping matching Pearl Idea Recruit
     if (chronoEl && portfolioEl) {
       const triggerStart = portfolioEl.offsetTop;
-      const totalScrollArea = 3800; // Increased scroll journey to make the transition space highly immersive and responsive
+      const totalScrollArea = PORTFOLIO_SCROLL_JOURNEY; // Shorter journey so the contact section arrives sooner.
       const delayScroll = 500; // Scroll down 500px through Recruitment Banner first before the portal circle starts to expand
       const transitionLength = totalScrollArea - delayScroll;
       const triggerEnd = triggerStart + totalScrollArea;
@@ -370,15 +371,19 @@ export default function App() {
         if (isComingBackFromHubRef.current) {
           isProgrammaticScrollRef.current = false;
         } else {
-          // Let's scroll slow and steady down to portfolio element offset + the 3800px final state (takes 3800ms for magnificent slow zoom!)
-          runProgrammaticScroll("portfolio-section", 3000, 3000);
+          // Scroll to the portfolio reveal faster so the contact section follows sooner.
+          runProgrammaticScroll(
+            "portfolio-section",
+            PORTFOLIO_SCROLL_JOURNEY,
+            1100,
+          );
         }
         return;
       }
 
       if (r === "contact") {
         setActiveRoom("contact");
-        runProgrammaticScroll("contact-section", 0, 100);
+        runProgrammaticScroll("contact-section", 0, 450);
         return;
       }
 
@@ -427,7 +432,7 @@ export default function App() {
   };
 
   const scrollThreshold = 15; // Delta scroll threshold limits to prevent double skipping
-  const scrollCooldown = 900; // ms transition freeze to allow animations to fully play out
+  const scrollCooldown = 100; // ms transition freeze to allow animations to fully play out
   const lastScrollTime = useRef<number>(0);
 
   // High-performance direct wheel scroll pagination tracking with smart container limit detection
@@ -862,7 +867,9 @@ export default function App() {
             <div
               id="portfolio-section"
               className="w-full relative select-none"
-              style={{ height: "calc(100vh - 53px + 3800px)" }}
+              style={{
+                height: `calc(100vh - 53px + ${PORTFOLIO_SCROLL_JOURNEY}px)`,
+              }}
             >
               {/* Sticky container that stays fixed on screen during the scroll transition */}
               <div className="sticky top-[53px] h-[calc(100vh-53px)] w-full overflow-hidden bg-white flex items-center justify-center">

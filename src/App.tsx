@@ -34,7 +34,7 @@ const getRoomGroupKey = (room: string) => {
 };
 
 export default function App() {
-  const PORTFOLIO_SCROLL_JOURNEY = 1800;
+  const PORTFOLIO_SCROLL_JOURNEY = 1200;
   const [activeRoom, setActiveRoom] = useState<string>("overview");
   const [activeSubTab, setActiveSubTab] = useState<string>("");
   const [isHoveredBack, setIsHoveredBack] = useState<boolean>(false);
@@ -375,7 +375,7 @@ export default function App() {
           runProgrammaticScroll(
             "portfolio-section",
             PORTFOLIO_SCROLL_JOURNEY,
-            1100,
+            700,
           );
         }
         return;
@@ -383,7 +383,7 @@ export default function App() {
 
       if (r === "contact") {
         setActiveRoom("contact");
-        runProgrammaticScroll("contact-section", 0, 450);
+        runProgrammaticScroll("contact-section", 0, 200);
         return;
       }
 

@@ -1,20 +1,56 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Thareah Freeland Portfolio
 
-# Run and deploy your AI Studio app
+Welcome to my creative and technical portfolio. This site showcases my work in **AI systems**, **web development**, **clinical healthcare applications**, and **visual design**.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/f544b1c8-9420-4519-9a4f-60e5d61c56af
+- **AI Systems Hub** – Explore machine learning projects and AI integrations
+- **Clinical AI Dashboard** – Healthcare analytics and diagnostic support tools
+- **Khmer OCR Vision** – Optical character recognition for Khmer text
+- **RAG Chat Console** – Retrieval-augmented generation chatbot interface
+- **Artwork Exhibition** – Visual design and digital art curation
+- **Web Development Showcase** – Modern full-stack web applications
 
-## Run Locally
+## Getting Started
 
-**Prerequisites:**  Node.js
+### Prerequisites
+- Node.js v18+
+- npm or yarn
 
+### Installation & Development
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm install
+npm run dev
+```
+
+The development server will start on `http://localhost:3000` (or the next available port if 3000 is in use).
+
+### Build for Production
+
+```bash
+npm run build
+npm run start
+```
+
+## Tech Stack
+
+- **Frontend**: React 19, TypeScript, Tailwind CSS, Vite
+- **Backend**: Express.js, Node.js
+- **AI/ML**: Google Generative AI (Gemini)
+- **Build**: Vite, esbuild
+- **Design**: Visual Merchandising principles, motion design
+
+## Project Structure
+
+```
+src/
+  ├── components/     # React components for portfolio sections
+  ├── assets/         # Images, logos, and design materials
+  └── data.ts         # Project data and configurations
+```
+
+## License
+
+© 2026 Thareah Freeland. All rights reserved.
+

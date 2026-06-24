@@ -371,14 +371,14 @@ export default function App() {
           isProgrammaticScrollRef.current = false;
         } else {
           // Let's scroll slow and steady down to portfolio element offset + the 3800px final state (takes 3800ms for magnificent slow zoom!)
-          runProgrammaticScroll("portfolio-section", 3800, 3800);
+          runProgrammaticScroll("portfolio-section", 3000, 3000);
         }
         return;
       }
 
       if (r === "contact") {
         setActiveRoom("contact");
-        runProgrammaticScroll("contact-section", 0, 1900);
+        runProgrammaticScroll("contact-section", 0, 100);
         return;
       }
 

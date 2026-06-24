@@ -126,41 +126,43 @@ export const PROJECTS: Project[] = [
     ]
   },
   {
-    id: "banking-dwh",
-    title: "Banking Data Warehouse",
-    subtitle: "High-Throughput Secure ETL Infra",
-    category: "Data Engineering / Security",
+    id: "novahq-platform",
+    title: "NovaHQ Workspace Platform",
+    subtitle: "SaaS Operations Dashboard — Work in Progress",
+    category: "Web Application / Frontend",
     projectType: "webdev",
-    year: "2023",
-    description: "Designed a multi-layered transactional data warehouse processing millions of compliant events daily under stringent security parameters.",
-    longDescription: "Orchestrated the architectural blueprint and execution of a national retail banking ledger warehouse. Conducted rigorous schema modeling utilizing the Data Vault 2.0 paradigm to preserve comprehensive, cryptographically tamper-proof auditing logs for multi-currency microloans and core processing operations.",
-    tags: ["PostgreSQL", "Apache Airflow", "dbt", "Docker", "GCP Stack"],
-    image: "https://images.unsplash.com/photo-1554941068-a252680d25d9?auto=format&fit=crop&w=600&q=80",
-    accentColor: "zinc",
+    year: "2025",
+    description: "An early-stage SaaS workspace dashboard, currently iterating on layout and visual design, deployed on Vercel.",
+    longDescription: "An in-progress build of NovaHQ, a team operations platform. The core layout, feature sections, and routing are in place, with active iteration on the visual design and interaction polish. Deployed continuously to Vercel as the design matures.",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
+    accentColor: "sky",
+    liveUrl: "https://novahq-fzwo.vercel.app/",
     metrics: [
-      { label: "Daily Transactions", value: "4.2 Million" },
-      { label: "Ingestion Latency", value: "Sub-Second" },
-      { label: "Audit Compliance", value: "100%" }
+      { label: "Status", value: "In Progress" },
+      { label: "Deployment", value: "Vercel" },
+      { label: "Design", value: "Iterating" }
     ]
   },
   {
-    id: "nlp-model-dashboard",
-    title: "Khmer NLP Model Training Portal",
-    subtitle: "High-Performance Interactive Model Monitor",
-    category: "Web Application / Live Analytics",
+    id: "novahq-studio",
+    title: "NovaHQ Studio",
+    subtitle: "Product Marketing & Brand Experience",
+    category: "Web Application / Frontend",
     projectType: "webdev",
-    year: "2024",
-    description: "An elegant, interactive web dashboard showcasing real-time PyTorch model weights, active epoch steps, and training analytics.",
-    longDescription: "Built a high-fidelity web interface acting as a live portal for deep learning researchers. Implemented responsive SVG charting matrices, state cache management, and multi-threaded event polling that visualizes convergence rates and character accuracy deltas on-the-fly without freezing browser interactions.",
-    tags: ["React Hooks", "HTML Canvas", "SVG Charts", "WebSockets", "CSS Grid"],
-    image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=600&q=80",
+    year: "2025",
+    description: "A refined marketing companion site for the NovaHQ brand, showcasing product storytelling with cinematic motion, deployed on Vercel.",
+    longDescription: "Built an immersive brand and product storytelling experience for NovaHQ Studio. Combines bold editorial typography, layered scroll reveals, and a clean component-driven layout to communicate product value, all engineered for crisp responsiveness and fast edge delivery on Vercel.",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Motion", "Vercel"],
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
     accentColor: "emerald",
+    liveUrl: "https://novahq-livid.vercel.app/",
     metrics: [
-      { label: "State Sync", value: "<5ms" },
-      { label: "Chart Density", value: "High" },
-      { label: "User Rating", value: "S-Tier" }
+      { label: "Deployment", value: "Vercel Edge" },
+      { label: "Responsive", value: "100%" },
+      { label: "Lighthouse", value: "A Grade" }
     ]
-  }
+  },
 ];
 
 export const SKILL_CATEGORIES: SkillCategory[] = [

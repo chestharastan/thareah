@@ -12,7 +12,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const DEFAULT_PORT = Number(process.env.PORT ?? 3000);
 
 app.use(express.json());
 
@@ -197,9 +197,23 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running at http://0.0.0.0:${PORT}`);
+  const startListening = (port: number): Promise<number> => new Promise((resolve, reject) => {
+    const server = app.listen(port, '0.0.0.0', () => {
+      resolve(port);
+    });
+
+    server.on('error', (error: NodeJS.ErrnoException) => {
+      if (error.code === 'EADDRINUSE') {
+        resolve(startListening(port + 1));
+        return;
+      }
+
+      reject(error);
+    });
   });
+
+  const port = await startListening(DEFAULT_PORT);
+  console.log(`Server running at http://0.0.0.0:${port}`);
 }
 
 startServer();

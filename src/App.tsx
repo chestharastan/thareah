@@ -820,7 +820,7 @@ export default function App() {
                 {/* Structured Toolkit columns */}
                 <div className="lg:col-span-7 space-y-4">
                   <span className="font-mono text-[9.5px] text-neutral-400 font-extrabold uppercase block tracking-widest pl-2">
-                    ORGANIZED CAPABILITY PORT MATRIX
+                    WHAT I CAN DO
                   </span>
                   <div className="grid grid-cols-2 gap-4">
                     {SKILL_CATEGORIES.slice(0, 2).map((cat) => (
@@ -828,32 +828,26 @@ export default function App() {
                         key={cat.id}
                         className="bg-neutral-50 border border-neutral-150 p-4 rounded-xs space-y-4"
                       >
-                        <div className="space-y-0.5">
+                        <div className="space-y-1.5">
                           <span className="font-mono text-[8px] text-amber-600 uppercase font-bold">
-                            GROUP PORT
+                            CAPABILITY PORT
                           </span>
                           <h4 className="font-display font-medium text-xs text-neutral-900">
                             {cat.title}
                           </h4>
                         </div>
-                        <div className="space-y-3">
-                          {cat.skills.slice(0, 3).map((s, sIdx) => (
-                            <div key={sIdx} className="space-y-1">
-                              <div className="flex justify-between text-[10px] font-mono">
-                                <span className="font-semibold text-neutral-700">
-                                  {s.name}
-                                </span>
-                                <span>{s.level}%</span>
+                        <ul className="space-y-2">
+                          {cat.skills.slice(0, 3).map((s) => (
+                            <li key={s.name} className="space-y-0.5">
+                              <div className="font-mono text-[10px] font-semibold text-neutral-700">
+                                {s.name}
                               </div>
-                              <div className="h-1 bg-neutral-200 rounded-full overflow-hidden">
-                                <div
-                                  className="h-full bg-neutral-900"
-                                  style={{ width: `${s.level}%` }}
-                                ></div>
+                              <div className="text-[11px] text-neutral-500 leading-snug">
+                                {s.description}
                               </div>
-                            </div>
+                            </li>
                           ))}
-                        </div>
+                        </ul>
                       </div>
                     ))}
                   </div>

@@ -128,34 +128,25 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
           </div>
         </div>
 
-        {/* Skill sliders directly copied for robust visual presence */}
+        {/* Simple capability list */}
         <div>
           <span className="font-mono text-[8px] text-neutral-400 block uppercase font-extrabold tracking-widest pl-1 mb-4">
-            MEASURED SKILL MATRIX RATIO
+            WHAT I CAN DO
           </span>
           <div className="space-y-4">
             {SKILL_CATEGORIES.map((cat, idx) => (
-              <div key={idx} className="space-y-2">
-                <div className="flex justify-between text-[10px] font-mono">
-                  <span className="font-bold text-neutral-800 uppercase">{cat.title}</span>
-                  <span className="text-amber-600 font-light">[ COMPLIANT ]</span>
+              <div key={idx} className="space-y-2 rounded-xs border border-neutral-100 bg-neutral-50/70 p-4">
+                <div className="font-mono text-[10px] font-bold text-neutral-800 uppercase">
+                  {cat.title}
                 </div>
-                <div className="grid grid-cols-2 gap-3">
-                  {cat.skills.slice(0, 2).map((skill, sIdx) => (
-                    <div key={sIdx} className="p-2.5 bg-neutral-50 border border-neutral-100 rounded-sm space-y-1">
-                      <div className="flex justify-between items-baseline font-mono text-[9.5px]">
-                        <span className="text-neutral-700 truncate font-semibold">{skill.name}</span>
-                        <span className="text-neutral-400 font-bold">{skill.level}%</span>
-                      </div>
-                      <div className="h-1 bg-neutral-200 rounded-full overflow-hidden">
-                        <div 
-                          className="h-full bg-neutral-900 rounded-full transition-all duration-1000"
-                          style={{ width: `${skill.level}%` }}
-                        ></div>
-                      </div>
-                    </div>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] font-sans text-neutral-600">
+                  {cat.skills.slice(0, 4).map((skill) => (
+                    <li key={skill.name} className="flex items-start gap-2">
+                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-neutral-400 shrink-0" />
+                      <span>{skill.name}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             ))}
           </div>

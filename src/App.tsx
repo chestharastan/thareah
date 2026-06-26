@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { ArrowLeft } from "lucide-react";
 
 import { ExhibitionLayout } from "./types";
-import { SKILL_CATEGORIES, RESEARCH_PAPERS, TIMELINE } from "./data";
+import { RESEARCH_PAPERS, TIMELINE } from "./data";
 
 import Header from "./components/Header";
 import ExhibitionSandbox from "./components/ExhibitionSandbox";
@@ -32,6 +32,42 @@ const getRoomGroupKey = (room: string) => {
     return "intro";
   return room;
 };
+
+const CORE_INCOME_CAPABILITIES = [
+  {
+    title: "Web Development",
+    tag: "Client Delivery",
+    skills: [
+      "React / TypeScript product interfaces",
+      "Business dashboards and admin systems",
+      "Responsive websites deployed on Vercel",
+    ],
+  },
+  {
+    title: "AI Automation",
+    tag: "Workflow Value",
+    skills: [
+      "RAG knowledge assistants",
+      "Telegram bots and AI agents",
+      "OCR and document intelligence prototypes",
+    ],
+  },
+  {
+    title: "Backend & Data Systems",
+    tag: "Operational Backbone",
+    skills: [
+      "REST APIs with Node or FastAPI",
+      "SQL data models and validation pipelines",
+      "Dockerized services and cloud deployment",
+    ],
+  },
+];
+
+const SUPPORTING_AUTHORITY = [
+  "Machine learning research",
+  "AI instruction and workshops",
+  "Technical writing and experiments",
+];
 
 export default function App() {
   const PORTFOLIO_SCROLL_JOURNEY = 1200;
@@ -763,9 +799,13 @@ export default function App() {
                     Curation Chronology
                   </h2>
                   <p className="text-neutral-500 text-xs leading-relaxed max-w-sm">
-                    Professional landmarks, research paper hypotheticals, and
-                    core capabilities matrices plotted as physical displays.
+                    Primary positioning: full-stack AI developer building web,
+                    automation, and data systems for real-world business workflows.
                   </p>
+                  <div className="border-l-2 border-amber-500 bg-neutral-50 px-4 py-3 text-[11px] leading-relaxed text-neutral-650">
+                    I design and deploy AI + web systems for business automation,
+                    knowledge retrieval, OCR, dashboards, and data workflows.
+                  </div>
 
                   {/* Dynamic Accordion list inside long timeline */}
                   <div
@@ -773,7 +813,7 @@ export default function App() {
                     className="pt-6 space-y-3 font-medium"
                   >
                     <span className="font-mono text-[9px] text-neutral-400 uppercase block font-semibold hover:text-amber-500">
-                      PUBLISHED REPOSITORIES ABSTRACTS
+                      RESEARCH PROOF
                     </span>
                     <div className="space-y-3 shrink-0">
                       {RESEARCH_PAPERS.map((paper) => {
@@ -820,36 +860,49 @@ export default function App() {
                 {/* Structured Toolkit columns */}
                 <div className="lg:col-span-7 space-y-4">
                   <span className="font-mono text-[9.5px] text-neutral-400 font-extrabold uppercase block tracking-widest pl-2">
-                    WHAT I CAN DO
+                    CORE INCOME SKILLS
                   </span>
-                  <div className="grid grid-cols-2 gap-4">
-                    {SKILL_CATEGORIES.slice(0, 2).map((cat) => (
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {CORE_INCOME_CAPABILITIES.map((cat) => (
                       <div
-                        key={cat.id}
+                        key={cat.title}
                         className="bg-neutral-50 border border-neutral-150 p-4 rounded-xs space-y-4"
                       >
                         <div className="space-y-1.5">
                           <span className="font-mono text-[8px] text-amber-600 uppercase font-bold">
-                            CAPABILITY PORT
+                            {cat.tag}
                           </span>
                           <h4 className="font-display font-medium text-xs text-neutral-900">
                             {cat.title}
                           </h4>
                         </div>
                         <ul className="space-y-2">
-                          {cat.skills.slice(0, 3).map((s) => (
-                            <li key={s.name} className="space-y-0.5">
-                              <div className="font-mono text-[10px] font-semibold text-neutral-700">
-                                {s.name}
-                              </div>
-                              <div className="text-[11px] text-neutral-500 leading-snug">
-                                {s.description}
+                          {cat.skills.map((skill) => (
+                            <li key={skill} className="flex items-start gap-2 text-[11px] leading-snug text-neutral-600">
+                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" />
+                              <div>
+                                {skill}
                               </div>
                             </li>
                           ))}
                         </ul>
                       </div>
                     ))}
+                  </div>
+                  <div className="border border-neutral-150 bg-white p-4 rounded-xs">
+                    <span className="font-mono text-[8px] text-neutral-400 uppercase font-extrabold tracking-widest block mb-3">
+                      SUPPORTING AUTHORITY
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                      {SUPPORTING_AUTHORITY.map((item) => (
+                        <div
+                          key={item}
+                          className="border border-neutral-100 bg-neutral-50 px-3 py-2 text-[11px] font-medium text-neutral-650"
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

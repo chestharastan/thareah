@@ -42,6 +42,11 @@ export interface TimelineEvent {
   role: string;
   organization: string;
   description: string;
+  highlights: {
+    label: string;
+    value: string;
+  }[];
+  tech: string[];
 }
 
 export interface ExhibitionElement {

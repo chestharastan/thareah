@@ -34,10 +34,10 @@ export default function RecruitmentBanner({ onEnterPortals, isStickyMode = false
       {/* Subtle warm lighting wash */}
       <div className="absolute inset-0 bg-radial-gradient from-amber-50/20 via-transparent to-transparent opacity-80 pointer-events-none z-0"></div>
 
-      <div className={`relative max-w-6xl mx-auto px-6 z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center ${isStickyMode ? 'py-4 md:py-8' : 'py-20 md:py-28'}`}>
+      <div className={`relative max-w-6xl mx-auto px-5 sm:px-6 z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 items-center ${isStickyMode ? 'py-6 md:py-8' : 'py-16 sm:py-20 md:py-28'}`}>
         
         {/* LEFT COLUMN: Editorial Text & Copy */}
-        <div className="lg:col-span-7 space-y-8 select-text">
+        <div className="lg:col-span-7 space-y-6 md:space-y-8 select-text">
           
           {/* Header Subtitle with Left Horizontal Line Indicator */}
           <div className="flex items-center gap-3">
@@ -49,13 +49,13 @@ export default function RecruitmentBanner({ onEnterPortals, isStickyMode = false
           </div>
 
           {/* MAIN SERIF ITALIC DISPLAY HEADLINES (Better with you. More with you.) */}
-          <div className="space-y-1">
+          <div className="space-y-2 md:space-y-1 max-w-full">
             <motion.h1 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="font-serif text-5xl md:text-7xl lg:text-8xl italic font-light tracking-tight text-[#22211e]"
+              className="max-w-full font-serif text-[2.65rem] sm:text-5xl md:text-7xl lg:text-8xl italic font-light leading-[0.98] tracking-normal text-[#22211e]"
             >
               Better with you.
             </motion.h1>
@@ -65,7 +65,7 @@ export default function RecruitmentBanner({ onEnterPortals, isStickyMode = false
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="font-serif text-5xl md:text-7xl lg:text-8xl italic font-light tracking-tight text-[#22211e] pl-10 md:pl-24"
+              className="max-w-full font-serif text-[2.65rem] sm:text-5xl md:text-7xl lg:text-8xl italic font-light leading-[0.98] tracking-normal text-[#22211e] pl-0 sm:pl-10 md:pl-24"
             >
               More with you.
             </motion.h1>
@@ -90,7 +90,7 @@ export default function RecruitmentBanner({ onEnterPortals, isStickyMode = false
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={onEnterPortals}
-              className="group flex items-center gap-4 bg-neutral-900 text-white pl-6 pr-5 py-3.5 rounded-none font-mono text-[10px] md:text-xs font-black tracking-widest uppercase hover:bg-neutral-800 transition-all cursor-pointer shadow-xl relative overflow-hidden"
+              className="group flex w-full sm:w-auto items-center justify-center gap-3 sm:gap-4 bg-neutral-900 text-white pl-5 sm:pl-6 pr-5 py-3.5 rounded-none font-mono text-[9px] sm:text-[10px] md:text-xs font-black tracking-widest uppercase hover:bg-neutral-800 transition-all cursor-pointer shadow-xl relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-amber-600/10 via-amber-600/0 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-out"></div>
               <span className="relative z-10 flex items-center gap-2">

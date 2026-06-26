@@ -20,40 +20,85 @@ interface ServiceItem {
 
 const SERVICES: ServiceItem[] = [
   {
-    id: "design",
+    id: "graphic-design",
     icon: Layers,
-    tag: "CURATION & DESIGN",
-    title: "Spatial Design System",
-    phrase: "空間を翻訳し、美学としてのブランドを提示する。",
-    description: "Designing high-fidelity spatial visual layouts. Seamlessly blending tactile paper-textured UI, editorial type treatments, and physics-calculated display simulations. Best matched for premium brands looking to stand out on high-dpi displays.",
-    deliverables: ["Dynamic Grid Layouts", "Acellular Color Profiles", "Textured Cream & Amber Canvases"],
-    vibeColor: "text-amber-600 bg-amber-50 border-amber-200"
+    tag: "BRANDING & VISUAL DESIGN",
+    title: "Graphic Design",
+    phrase: "ブランドの価値を、視覚で伝える。",
+    description:
+      "Creating modern, high-impact visual identities for businesses. From logos and brand assets to marketing materials and social media graphics, every design is crafted to communicate clearly and leave a lasting impression.",
+    deliverables: [
+      "Logo & Brand Identity",
+      "Social Media Graphics",
+      "Posters, Flyers & Print Design",
+    ],
+    vibeColor: "text-amber-600 bg-amber-50 border-amber-200",
   },
   {
-    id: "fullstack",
+    id: "website-design",
     icon: Monitor,
-    tag: "ENGINEERING",
-    title: "Bespoke Full-Stack Web Development",
-    phrase: "高速な動作、型安全、そして直感的な体験を同時に。",
-    description: "Custom UI development with React 18, Vite, and tailwind typography. From interactive canvas boards to real-time responsive analytics, each interaction is mapped to stable spring animations for lag-free, tactile performance.",
-    deliverables: ["Framer Motion orchestrations", "Optimized viewport scaling", "Zero-loading instant transitions"],
-    vibeColor: "text-blue-600 bg-blue-50 border-blue-200"
+    tag: "UI / UX DESIGN",
+    title: "Website Design",
+    phrase: "美しさと使いやすさを両立する。",
+    description:
+      "Designing modern, responsive, and user-focused websites with clean layouts and engaging interactions. Every interface is built to strengthen your brand and maximize user experience.",
+    deliverables: [
+      "UI/UX Design",
+      "Responsive Layouts",
+      "Interactive Prototypes",
+    ],
+    vibeColor: "text-blue-600 bg-blue-50 border-blue-200",
   },
   {
-    id: "ai-systems",
+    id: "web-app",
+    icon: Monitor,
+    tag: "FULL-STACK DEVELOPMENT",
+    title: "Web Application Development",
+    phrase: "高速・安全・スケーラブルなWeb体験。",
+    description:
+      "Building scalable web applications using modern technologies such as React, Next.js, Node.js, and FastAPI. From dashboards to internal management systems, every application is optimized for performance and maintainability.",
+    deliverables: [
+      "Admin Dashboards",
+      "Business Management Systems",
+      "REST API Integration",
+    ],
+    vibeColor: "text-indigo-600 bg-indigo-50 border-indigo-200",
+  },
+  {
+    id: "ai-agent",
     icon: Sparkles,
-    tag: "INTELLIGENT INTEGRATION",
-    title: "Human-AI Cognitive Systems",
-    phrase: "データの背景にあるコンテキストをインテリジェントに抽出。",
-    description: "Developing intelligent dashboards, predictive data analysis nodes, and custom AI inference simulations. Bridging advanced model capabilities with human operators through natural-language terminal shells.",
-    deliverables: ["Custom predictive pipelines", "Localized OCR visualizers", "Context-aware RAG interfaces"],
-    vibeColor: "text-amber-700 bg-amber-50 border-amber-300"
-  }
+    tag: "AI AUTOMATION",
+    title: "AI Agent Development",
+    phrase: "AIを、あなたのビジネスパートナーへ。",
+    description:
+      "Developing intelligent AI agents that automate workflows, answer customer inquiries, retrieve knowledge with RAG, and integrate seamlessly with Telegram or web platforms.",
+    deliverables: [
+      "Telegram AI Bots",
+      "Web AI Assistants",
+      "RAG & Knowledge Base Integration",
+    ],
+    vibeColor: "text-amber-700 bg-amber-50 border-amber-300",
+  },
+  {
+    id: "telegram-ecommerce",
+    icon: Sparkles,
+    tag: "E-COMMERCE AUTOMATION",
+    title: "Telegram E-Commerce Solutions",
+    phrase: "チャットから、そのまま販売へ。",
+    description:
+      "Creating Telegram-based e-commerce systems that allow businesses to showcase products, manage orders, process customer requests, and automate sales workflows directly within Telegram.",
+    deliverables: [
+      "Product Catalog",
+      "Order Management",
+      "Payment & Notification Integration",
+    ],
+    vibeColor: "text-emerald-600 bg-emerald-50 border-emerald-200",
+  },
 ];
 
 export default function ServiceSection() {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
-  const [selectedService, setSelectedService] = useState<string | null>("design");
+  const [selectedService, setSelectedService] = useState<string | null>("graphic-design");
 
   return (
     <div className="w-full bg-[#faf8f4] py-16 md:py-24 border-t border-neutral-200">

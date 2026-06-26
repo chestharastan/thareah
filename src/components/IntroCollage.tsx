@@ -34,31 +34,31 @@ const SLOT_POOLS = [
       targetRoom: "about"
     }
   ],
-  // Slot 1: Center-top, large vertical, Clinical AI theme
+  // Slot 1: Center-top, large vertical, Automation & Bots theme
   [
     {
-      url: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80",
-      alt: "Biometric Lab Curation Lead",
-      label: "PROJECT // CLINICAL AI",
-      targetRoom: "diabetes"
+      url: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80",
+      alt: "Robot arm assembly line",
+      label: "PROJECT // AUTOMATION ENGINE",
+      targetRoom: "automation"
     },
     {
-      url: "https://images.unsplash.com/photo-1584515979956-d9f6e5d09982?auto=format&fit=crop&w=600&q=80",
-      alt: "Healthcare EEG waves",
-      label: "CLINICAL // EEG DATA",
-      targetRoom: "diabetes"
+      url: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=600&q=80",
+      alt: "AI robot face glowing lines",
+      label: "BOT CORE // INTELLIGENCE",
+      targetRoom: "automation"
     },
     {
-      url: "https://images.unsplash.com/photo-1530026405186-ed1ea0ac7a63?auto=format&fit=crop&w=600&q=80",
-      alt: "Medical analyzer workspace",
-      label: "DIAGNOSTICS // XAI LAB",
-      targetRoom: "diabetes"
+      url: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?auto=format&fit=crop&w=600&q=80",
+      alt: "Automated terminal code interface",
+      label: "DEV LAB // WEB SCRAPER",
+      targetRoom: "automation"
     }
   ],
   // Slot 2: Bottom-left, wide aspect, OCR / Deep learning theme
   [
     {
-      url: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=600&q=80",
+      url: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80",
       alt: "Historical Archive Research Desk",
       label: "PROJECT // KHMER OCR",
       targetRoom: "ocr"
@@ -78,7 +78,7 @@ const SLOT_POOLS = [
   ],
   // Slot 3: Bottom-center, tall layout, Brutalist sandbox theme
   [
-    {chamber 
+    {
       url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
       alt: "Brutalist Space Architectural Plan",
       label: "PROJECT // DESIGN SANDBOX",

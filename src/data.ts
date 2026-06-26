@@ -224,24 +224,42 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
 
 export const TIMELINE: TimelineEvent[] = [
   {
-    year: "2025",
-    title: "AI Student Circle — Cambodia",
-    role: "Co-Founder & Lead Instructor",
-    organization: "AI Student Circle",
-    description: "Created and launched Cambodia's premiere student-led AI development circle. Designed core syllabi, secured regional sponsorship, and lectured on practical deep learning to over 140+ student software engineers, concluding with a national generative-art hackathon."
+    year: "2026",
+    title: "Khmer OCR Research Pipeline",
+    role: "Computer Vision Research Assistant / Lead Developer",
+    organization: "Academic NLP Laboratories",
+    description: "Leading deep learning experiments for Khmer script layout analysis, handwritten and printed text recognition, and OCR performance on complex layouts and degraded scans.",
+    highlights: [
+      { label: "Problem", value: "Khmer OCR must handle stacked glyphs, mixed handwriting, printed text, and damaged document scans." },
+      { label: "Solution", value: "Built segmentation and recognition experiments using deep learning and image preprocessing pipelines." },
+      { label: "Impact", value: "Advancing a specialized OCR pipeline for Khmer documents and low-quality historical scans." }
+    ],
+    tech: ["Python", "PyTorch", "OpenCV", "OCR"]
   },
   {
-    year: "2024",
-    title: "Lead Intelligence Engineer",
-    role: "Data Infrastructure Architect",
-    organization: "Dev-Studio Cambodia",
-    description: "Designed secure compliance pipelines for enterprise microcredit and blockchain ledgers. Pioneered structural audit systems processing millions of transactions, ensuring zero data discrepancies or unauthorized records."
+    year: "2024-2025",
+    title: "Web Application Development",
+    role: "Full-Stack Developer / Software Engineer",
+    organization: "Independent Projects & Client Builds",
+    description: "Built responsive frontend architectures, dashboard modules, full-stack platforms, and backend APIs for business-facing web applications.",
+    highlights: [
+      { label: "Problem", value: "Teams needed polished web apps that were responsive, maintainable, and connected to real data flows." },
+      { label: "Solution", value: "Developed React interfaces, reusable modules, REST APIs, and deployment-ready full-stack systems." },
+      { label: "Impact", value: "Delivered portfolio-ready web platforms, dashboards, and production-style application workflows." }
+    ],
+    tech: ["React", "TypeScript", "Node.js", "REST APIs"]
   },
   {
     year: "2023",
-    title: "Research Assistant & Vision Coder",
-    role: "OpenCV Researcher",
-    organization: "Academic NLP Laboratories",
-    description: "Pioneered neural-net based text segmentation algorithms handling Khmer scripts and historical palm-leaf manuscripts. Developed novel high-frequency heuristics that significantly accelerated handwriting analysis."
+    title: "Face Recognition System",
+    role: "Computer Vision Engineer / Researcher",
+    organization: "Computer Vision Research Projects",
+    description: "Built an early face recognition pipeline that introduced facial detection, feature extraction, embedding comparison, and recognition-oriented model workflows.",
+    highlights: [
+      { label: "Problem", value: "Recognition systems need stable face detection and reliable identity matching across varied inputs." },
+      { label: "Solution", value: "Experimented with detection, preprocessing, feature extraction, and embedding-based comparisons." },
+      { label: "Impact", value: "Established the computer vision foundation that later supported OCR and document intelligence work." }
+    ],
+    tech: ["OpenCV", "Python", "Embeddings", "Face Detection"]
   }
 ];

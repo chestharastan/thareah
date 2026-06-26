@@ -5,7 +5,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Shield, Cpu, MapPin, Briefcase, Sparkles, LayoutGrid, Code, Palette, BrainCircuit, ArrowUpRight, X } from 'lucide-react';
+import { Shield, Cpu, MapPin, Briefcase, Sparkles, LayoutGrid, Code, Palette, BrainCircuit, X } from 'lucide-react';
 import { HERO_INFO, SKILL_CATEGORIES, PROJECTS } from '../data';
 import { Project } from '../types';
 import ProjectDetailsModal from './ProjectDetailsModal';
@@ -19,7 +19,6 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
   const [activeCategory, setActiveCategory] = useState<'all' | 'design' | 'webdev' | 'ai'>('all');
   const [viewingProject, setViewingProject] = useState<Project | null>(null);
 
-  // Helper to match projects back to interactive simulation rooms and subtabs
   const getSimDetails = (id: string): { room: string; subTab?: string } | null => {
     switch (id) {
       case 'diabetes-xai': return { room: 'ai', subTab: 'diabetes' };
@@ -33,8 +32,8 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
     }
   };
 
-  const filteredProjects = activeCategory === 'all' 
-    ? PROJECTS 
+  const filteredProjects = activeCategory === 'all'
+    ? PROJECTS
     : PROJECTS.filter(p => p.projectType === activeCategory);
 
   return (
@@ -45,7 +44,7 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
         ROOM://CHAMBER_1B // BIO_INTELLIGENCE // INDEX: ABOUT_ME
       </span>
 
-      {/* LEFT COLUMN: HERO AVATAR & MOTTO */}
+      {/* LEFT COLUMN */}
       <div className="lg:col-span-5 flex flex-col justify-between space-y-6">
         <div>
           <div className="flex items-center gap-2 mb-3">
@@ -64,21 +63,24 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
           {/* Editorial quote badge */}
           <div className="p-5 bg-neutral-50 border-l-2 border-amber-500 rounded-r-xs space-y-2">
             <p className="text-neutral-700 text-xs italic leading-relaxed font-sans font-medium">
-              &ldquo;Bridging the absolute math of machine learning networks with the pristine structure of high-end, responsive system architectures.&rdquo;
+              &ldquo;I design beautiful digital experiences and build intelligent software that helps businesses work smarter.&rdquo;
             </p>
           </div>
 
           <div className="mt-6 space-y-4 text-xs text-neutral-600 font-sans leading-relaxed">
             <p>
-              I am an enterprise intelligence software engineer, machine learning model builder, and perpetual technology student based in <strong className="text-neutral-900 font-semibold">Phnom Penh, Cambodia</strong>. My expertise revolves around deep convolutional script segmentation, explainable clinical medical grids, and secure, zero-leak enterprise RAG storage proxy architectures.
+              I'm <strong className="text-neutral-900">Thareah</strong>, a full-stack developer, AI engineer, and graphic designer based in <strong className="text-neutral-900">Phnom Penh, Cambodia</strong>.
             </p>
             <p>
-              Dedicated to absolute layout discipline and high-contrast human interface design (deeply optimized for readability), I focus on treating data flows as highly tactile, weight-bearing architectural elements.
+              I enjoy transforming ideas into modern digital products — from visually engaging websites and business management systems to AI-powered applications and Telegram automation. My goal is always the same: build solutions that are clean, intuitive, and genuinely useful.
+            </p>
+            <p>
+              With experience spanning design, software engineering, and machine learning, I combine creativity with technical thinking to create products that not only look good but solve real problems.
             </p>
           </div>
         </div>
 
-        {/* Dynamic Location HUD tags */}
+        {/* Status HUD */}
         <div className="space-y-3 font-mono text-[10px] text-neutral-500 border-t border-neutral-100 pt-6">
           <div className="flex items-center gap-2">
             <MapPin className="w-3.5 h-3.5 text-amber-500" />
@@ -86,7 +88,7 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
           </div>
           <div className="flex items-center gap-2">
             <Briefcase className="w-3.5 h-3.5 text-amber-500" />
-            <span className="text-neutral-700 font-semibold">AVAILABLE FOR HIGH-VALUE CONSULTING</span>
+            <span className="text-neutral-700 font-semibold">OPEN FOR FREELANCE PROJECTS</span>
           </div>
           <button
             onClick={() => setIsCabinetOpen(true)}
@@ -98,37 +100,41 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
         </div>
       </div>
 
-      {/* RIGHT COLUMN: TRAJECTORY AND CORE CORE SKILL MATRIX */}
+      {/* RIGHT COLUMN */}
       <div className="lg:col-span-7 flex flex-col justify-between space-y-8">
         {/* Core Pillars Grid */}
         <div>
           <span className="font-mono text-[8px] text-neutral-400 block uppercase font-extrabold tracking-widest pl-1 mb-3">
-            TECHNICAL PILOTS & EXPERTISES
+            TECHNICAL PILLARS & EXPERTISE
           </span>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="p-4 border border-neutral-150 bg-neutral-50 rounded-xs space-y-2">
               <div className="flex items-center gap-2 text-neutral-900 font-semibold text-xs font-mono">
                 <Cpu className="w-4 h-4 text-[#C5BCA5]" />
-                DEEP MODEL TUNING
+                AI & AUTOMATION
               </div>
               <p className="text-[11px] text-neutral-500 leading-normal font-sans">
-                PyTorch tensor workflows, computer vision (OpenCV contour masks), and custom feature-attribution explainability (SHAP).
+                Building AI agents, OCR systems, Retrieval-Augmented Generation (RAG),
+                Telegram bots, and intelligent workflow automation using modern
+                machine learning technologies.
               </p>
             </div>
 
             <div className="p-4 border border-neutral-150 bg-neutral-50 rounded-xs space-y-2">
               <div className="flex items-center gap-2 text-neutral-900 font-semibold text-xs font-mono">
                 <Shield className="w-4 h-4 text-[#C5BCA5]" />
-                LEDGER COMPLIANCE
+                WEB APPLICATIONS
               </div>
               <p className="text-[11px] text-neutral-500 leading-normal font-sans">
-                Data Vault 2.0 architectures, secure high-volume transactional pipelines, and zero-leak vector index retrieval mechanisms.
+                Developing responsive websites, business dashboards, inventory systems,
+                REST APIs, and scalable full-stack applications focused on performance
+                and user experience.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Simple capability list */}
+        {/* Skill Matrix */}
         <div>
           <span className="font-mono text-[8px] text-neutral-400 block uppercase font-extrabold tracking-widest pl-1 mb-4">
             WHAT I CAN DO
@@ -152,26 +158,24 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
           </div>
         </div>
 
-        {/* Pearl Idea bottom footer label */}
+        {/* Footer */}
         <div className="flex justify-between items-baseline text-[8px] font-mono text-neutral-400 pt-4 border-t border-neutral-100 mt-2">
-          <span>THAREAH // RECRUIT WEB-EXPERIENCE v2.0</span>
-          <span>COMPLIANCE RATING: VERIFIED S-RANK</span>
+          <span>THAREAH // DESIGN • DEVELOPMENT • AI</span>
+          <span>AVAILABLE WORLDWIDE</span>
         </div>
       </div>
 
-      {/* FULL SCREEN SLIDE-OVER: THE CURATION CABINET (ORGANIZED BY DESIGN, WEBDEV, AI) */}
+      {/* PORTFOLIO CABINET SLIDE-OVER */}
       <AnimatePresence>
         {isCabinetOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-50 bg-neutral-950/40 backdrop-blur-md flex justify-end"
           >
-            {/* Click backdrop to close */}
             <div className="absolute inset-0" onClick={() => setIsCabinetOpen(false)} />
 
-            {/* Sliding Panel */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
@@ -179,7 +183,7 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
               transition={{ type: 'spring', damping: 28, stiffness: 160 }}
               className="relative w-full max-w-4xl h-full bg-[#faf9f6] shadow-2xl z-10 flex flex-col justify-between overflow-hidden"
             >
-              {/* Top Banner Header */}
+              {/* Header */}
               <div className="p-6 md:p-8 border-b border-neutral-200/60 bg-white flex items-center justify-between">
                 <div>
                   <span className="font-mono text-[10px] text-neutral-400 uppercase font-semibold block tracking-wider mb-1">
@@ -189,7 +193,7 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
                     Project Portfolio Curation
                   </h3>
                 </div>
-                <button 
+                <button
                   onClick={() => setIsCabinetOpen(false)}
                   className="p-2 rounded-full hover:bg-neutral-100 text-neutral-400 hover:text-neutral-900 transition-colors cursor-pointer"
                 >
@@ -197,18 +201,17 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
                 </button>
               </div>
 
-              {/* Categorizers Filter Menu */}
+              {/* Filter Menu */}
               <div className="px-6 md:px-8 py-3 bg-neutral-50/80 border-b border-neutral-200/40 flex flex-wrap items-center justify-between gap-4">
                 <div className="flex items-center gap-2">
                   <span className="font-mono text-[9px] text-neutral-500 uppercase font-bold pr-2 border-r border-neutral-200">
-                    FILTER SYSTEMS
+                    FILTER
                   </span>
-                  
                   <div className="flex items-center gap-1.5 font-mono text-[10px]">
                     {[
-                      { id: 'all', label: 'ALL PILLARS', icon: LayoutGrid },
+                      { id: 'all', label: 'ALL', icon: LayoutGrid },
                       { id: 'design', label: '01 / DESIGN', icon: Palette },
-                      { id: 'webdev', label: '02 / WEBDEV', icon: Code },
+                      { id: 'webdev', label: '02 / WEB', icon: Code },
                       { id: 'ai', label: '03 / AI', icon: BrainCircuit }
                     ].map((tab) => {
                       const Icon = tab.icon;
@@ -218,8 +221,8 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
                           key={tab.id}
                           onClick={() => setActiveCategory(tab.id as any)}
                           className={`flex items-center gap-1.5 px-3 py-1 rounded-sm border transition-all cursor-pointer font-semibold ${
-                            isActive 
-                              ? 'bg-neutral-950 text-white border-neutral-950' 
+                            isActive
+                              ? 'bg-neutral-950 text-white border-neutral-950'
                               : 'bg-white hover:bg-neutral-100 text-neutral-600 border-neutral-250/70'
                           }`}
                         >
@@ -230,27 +233,25 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
                     })}
                   </div>
                 </div>
-
                 <div className="font-mono text-[9px] text-neutral-400 font-semibold uppercase">
-                  ACTIVE RATIO: {filteredProjects.length} CURATED
+                  {filteredProjects.length} PROJECTS
                 </div>
               </div>
 
-              {/* Grid Contents */}
+              {/* Grid */}
               <div className="flex-grow overflow-y-auto p-6 md:p-8 custom-scrollbar">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-8">
                   {filteredProjects.map((project) => {
                     const simDetails = getSimDetails(project.id);
                     return (
-                      <div 
+                      <div
                         key={project.id}
                         className="bg-white border border-neutral-200 rounded-sm overflow-hidden flex flex-col justify-between group shadow-xs hover:shadow-md transition-all duration-300"
                       >
-                        {/* Imagelink & category tag */}
                         <div className="relative h-44 bg-neutral-100 overflow-hidden">
-                          <img 
-                            src={project.image} 
-                            alt={project.title} 
+                          <img
+                            src={project.image}
+                            alt={project.title}
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                             referrerPolicy="no-referrer"
                           />
@@ -259,8 +260,8 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
                               {project.category}
                             </span>
                             <span className={`text-[8px] font-mono font-bold uppercase px-2 py-0.5 rounded-sm border ${
-                              project.projectType === 'ai' 
-                                ? 'bg-emerald-50 text-emerald-700 border-emerald-200' 
+                              project.projectType === 'ai'
+                                ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
                                 : project.projectType === 'webdev'
                                 ? 'bg-blue-50 text-blue-700 border-blue-200'
                                 : 'bg-amber-50 text-amber-700 border-amber-200'
@@ -268,13 +269,11 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
                               {project.projectType}
                             </span>
                           </div>
-                          
                           <span className="absolute bottom-2 right-2 text-[10px] font-mono font-bold bg-white/90 px-2 py-0.5 rounded-xs">
                             {project.year}
                           </span>
                         </div>
 
-                        {/* Text and Metrics Preview */}
                         <div className="p-4 flex-grow flex flex-col justify-between">
                           <div className="space-y-1">
                             <h4 className="font-display font-medium text-[16px] text-neutral-950 group-hover:text-amber-500 transition-colors leading-tight">
@@ -285,7 +284,6 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
                             </p>
                           </div>
 
-                          {/* Mini metrics bar */}
                           {project.metrics && project.metrics.length > 0 && (
                             <div className="grid grid-cols-3 gap-1.5 bg-neutral-50 border border-neutral-100/70 p-2 rounded-xs mt-3.5">
                               {project.metrics.slice(0, 3).map((m, mIdx) => (
@@ -297,13 +295,12 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
                             </div>
                           )}
 
-                          {/* Actions panel */}
                           <div className="flex gap-2 mt-4 pt-3 border-t border-neutral-100">
                             <button
                               onClick={() => setViewingProject(project)}
                               className="flex-grow py-1.5 px-3 bg-neutral-100 hover:bg-neutral-250 border border-neutral-200 text-neutral-700 hover:text-neutral-900 font-mono text-[9px] font-bold tracking-wider uppercase rounded-xs transition-colors cursor-pointer"
                             >
-                              DETAIL MATRIX
+                              VIEW DETAILS
                             </button>
 
                             {simDetails && (
@@ -321,7 +318,6 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
                               </button>
                             )}
                           </div>
-
                         </div>
                       </div>
                     );
@@ -331,8 +327,8 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
 
               {/* Cabinet Footer */}
               <div className="p-4 border-t border-neutral-200 bg-white text-center font-mono text-[9px] text-neutral-400 flex justify-between items-center px-6">
-                <span>SYSTEM CURATOR // v2.0 ONLINE STATUS</span>
-                <span>CHEVRON CALIBRATION APPROVED</span>
+                <span>THAREAH // DESIGN • DEVELOPMENT • AI</span>
+                <span>BUILDING DIGITAL PRODUCTS THAT MATTER</span>
               </div>
             </motion.div>
           </motion.div>
@@ -342,9 +338,9 @@ export default function AboutMeSection({ onExploreProjects }: AboutMeSectionProp
       {/* Project Details Modal */}
       <AnimatePresence>
         {viewingProject && (
-          <ProjectDetailsModal 
-            project={viewingProject} 
-            onClose={() => setViewingProject(null)} 
+          <ProjectDetailsModal
+            project={viewingProject}
+            onClose={() => setViewingProject(null)}
           />
         )}
       </AnimatePresence>

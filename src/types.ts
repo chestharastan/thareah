@@ -1,70 +1,51 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
+export type ProjectCategory = 'web' | 'ai' | 'branding' | 'poster';
 
 export interface Project {
+  /** Unique id: lowercase words joined by dashes */
   id: string;
   title: string;
-  subtitle: string;
-  category: string;
-  projectType: 'design' | 'webdev' | 'ai';
+  category: ProjectCategory;
   year: string;
-  description: string;
-  longDescription: string;
-  tags: string[];
-  image: string;
+  /** One sentence, shown in cards and lists */
+  summary: string;
+  /** Longer text, shown when the project is opened */
+  description?: string;
+  /** Main image, e.g. '/images/work/my-project.webp'. Leave it out to get a generated cover. */
+  image?: string;
+  /** Optional 4:3 picture for cards and lists (e.g. a mockup). Without it, `image` is used. */
+  cover?: string;
+  /** Extra images, shown when the project is opened */
+  gallery?: string[];
+  tags?: string[];
   metrics?: { label: string; value: string }[];
-  accentColor: string;
   liveUrl?: string;
+  /** Also show this project in the "Selected work" scroller */
+  featured?: boolean;
 }
 
-export interface SkillCategory {
-  id: string;
+export type PillarId = 'design' | 'web' | 'ai';
+
+/** A group of work shown in the About cards and the project filters */
+export interface Pillar {
+  id: PillarId;
+  title: string;
+  text: string;
+  categories: ProjectCategory[];
+  /** Ids of the three projects pictured on the card (the middle one sits in front) */
+  showcase?: string[];
+}
+
+export interface Service {
   title: string;
   description: string;
-  skills: { name: string; level: number; description: string }[];
+  deliverables: string[];
 }
 
-export interface ResearchPaper {
-  id: string;
-  title: string;
-  question: string;
-  abstract: string;
-  venue: string;
-  year: string;
-  tags: string[];
-}
-
-export interface TimelineEvent {
+export interface Experience {
   year: string;
   title: string;
   role: string;
   organization: string;
   description: string;
-  highlights: {
-    label: string;
-    value: string;
-  }[];
   tech: string[];
-}
-
-export interface ExhibitionElement {
-  id: string;
-  name: string;
-  type: 'pedestal' | 'lighting' | 'sculpture' | 'text-panel' | 'mannequin' | 'screen' | 'prop';
-  x: number; // percentage of layout width, 0-100
-  y: number; // percentage of layout height, 0-100
-  color: string;
-  size: 'small' | 'medium' | 'large';
-  description: string;
-}
-
-export interface ExhibitionLayout {
-  theme: string;
-  inspiration: string;
-  lightingMood: string;
-  colorScheme: string[];
-  elements: ExhibitionElement[];
-  curatorsNotes: string;
 }

@@ -1,265 +1,377 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
+import type { Experience, Pillar, PillarId, Project, ProjectCategory, Service } from './types';
 
-import { Project, SkillCategory, ResearchPaper, TimelineEvent } from './types';
+/* ──────────────────────────────────────────────────────────────────────
+ *  All the text and projects on the site live in this file.
+ *
+ *  ➜ Add a new project
+ *    1. Put its image in  public/images/work/
+ *       (WebP or JPG, about 1400px wide, ideally under 300 KB)
+ *    2. Copy one of the entries in PROJECTS below and edit it.
+ *       - category:  'web' | 'ai' | 'branding' | 'poster'
+ *       - featured:  true  → also shows in the "Selected work" scroller
+ *       - cover:     optional 4:3 picture for cards (e.g. a mockup);
+ *                    the project page still shows `image` and `gallery`
+ *       - no image yet?    → leave `image` out and a cover is generated
+ *    The project lists, filters and counters update automatically.
+ * ────────────────────────────────────────────────────────────────────── */
 
-export const HERO_INFO = {
-  name: "Thareah",
-  title: "I build with data & AI",
-  subtitle: "Engineer, builder, perpetual learner.",
-  tagline: "Bridging the gap between mathematical accuracy and architectural elegance. Crafting high-fidelity, secure intelligent software systems.",
-  location: "Phnom Penh, Cambodia",
-  availability: "Available for elite consulting & spatial engineering",
-  galleryHeroImage: "/src/assets/images/spatial_gallery_hero_1780197905791.png"
+export const SITE = {
+  name: 'Thareah',
+  location: 'Phnom Penh, Cambodia',
+  timeZone: 'Asia/Phnom_Penh',
+  email: 'dohloot@gmail.com',
+  intro:
+    "Hi, I'm Thareah, a freelance designer and full-stack developer. I build brands, websites and AI tools that look sharp and work smart.",
+  // Words wrapped in *stars* are highlighted.
+  statement:
+    "I'm a designer who codes and a developer who designs. I help businesses turn ideas into *brands,* *websites* and *AI* *tools* that are clean, fast and genuinely useful.",
+  // Paste your profile links here. Entries with an empty url are hidden.
+  socials: [
+    { label: 'Telegram', url: '' },
+    { label: 'LinkedIn', url: '' },
+    { label: 'GitHub', url: '' },
+    { label: 'Behance', url: '' },
+  ],
 };
 
+export const NAV_LINKS = [
+  { label: 'About', href: '#about' },
+  { label: 'Work', href: '#work' },
+  { label: 'Services', href: '#services' },
+  { label: 'Contact', href: '#contact' },
+];
+
+export const CATEGORIES: { id: ProjectCategory; label: string }[] = [
+  { id: 'web', label: 'Web' },
+  { id: 'ai', label: 'AI' },
+  { id: 'branding', label: 'Branding' },
+  { id: 'poster', label: 'Poster' },
+];
+
+export const categoryLabel = (id: ProjectCategory) =>
+  CATEGORIES.find((category) => category.id === id)?.label ?? id;
+
+export const PILLARS: Pillar[] = [
+  {
+    id: 'design',
+    title: 'Design',
+    text: 'Logos, brand identities, posters and social media graphics.',
+    categories: ['branding', 'poster'],
+    showcase: ['poster-coffee', 'arcwave', 'poster-pchum-ben'],
+  },
+  {
+    id: 'web',
+    title: 'Web',
+    text: 'Responsive websites, dashboards and full-stack web apps.',
+    categories: ['web'],
+  },
+  {
+    id: 'ai',
+    title: 'AI',
+    text: 'AI agents, RAG chatbots, OCR and workflow automation.',
+    categories: ['ai'],
+    showcase: ['khmer-ocr', 'diabetes-xai', 'knowledge-base-chatbot'],
+  },
+];
+
+export const projectsInPillar = (id: PillarId) => {
+  const pillar = PILLARS.find((p) => p.id === id);
+  return PROJECTS.filter((project) => pillar?.categories.includes(project.category));
+};
+
+export const SERVICES: Service[] = [
+  {
+    title: 'Graphic Design',
+    description:
+      'Modern visual identities for businesses: logos, brand assets, marketing materials and social media graphics that communicate clearly.',
+    deliverables: ['Logo & brand identity', 'Social media graphics', 'Posters, flyers & print'],
+  },
+  {
+    title: 'Website Design',
+    description:
+      'Responsive, user-focused websites with clean layouts and engaging interactions that strengthen your brand.',
+    deliverables: ['UI/UX design', 'Responsive layouts', 'Interactive prototypes'],
+  },
+  {
+    title: 'Web App Development',
+    description:
+      'Scalable web apps with React, Next.js, Node.js and FastAPI, from dashboards to internal management systems.',
+    deliverables: ['Admin dashboards', 'Business management systems', 'REST API integration'],
+  },
+  {
+    title: 'AI Agent Development',
+    description:
+      'AI agents that automate workflows, answer customer questions and search your knowledge base with RAG, on Telegram or the web.',
+    deliverables: ['Telegram AI bots', 'Web AI assistants', 'RAG & knowledge bases'],
+  },
+  {
+    title: 'Telegram E-Commerce',
+    description:
+      'Sell directly inside Telegram: show products, take orders, handle customer requests and automate your sales workflow.',
+    deliverables: ['Product catalog', 'Order management', 'Payments & notifications'],
+  },
+];
+
+export const EXPERIENCE: Experience[] = [
+  {
+    year: '2026',
+    title: 'Khmer OCR Research Pipeline',
+    role: 'Computer Vision Research Assistant / Lead Developer',
+    organization: 'Academic NLP Laboratories',
+    description:
+      'Leading deep learning experiments for Khmer layout analysis and for handwritten and printed text recognition on complex, degraded scans.',
+    tech: ['Python', 'PyTorch', 'OpenCV', 'OCR'],
+  },
+  {
+    year: '2024 – 2025',
+    title: 'Web Application Development',
+    role: 'Full-Stack Developer',
+    organization: 'Independent projects & client builds',
+    description:
+      'Built responsive front-ends, dashboards, REST APIs and full-stack platforms for business-facing web apps.',
+    tech: ['React', 'TypeScript', 'Node.js', 'REST APIs'],
+  },
+  {
+    year: '2023',
+    title: 'Face Recognition System',
+    role: 'Computer Vision Engineer / Researcher',
+    organization: 'Computer vision research projects',
+    description:
+      'Built a face recognition pipeline (detection, feature extraction and embedding comparison), the foundation for later OCR work.',
+    tech: ['Python', 'OpenCV', 'Embeddings', 'Face detection'],
+  },
+];
+
 export const PROJECTS: Project[] = [
+  // ── Web ──────────────────────────────────────────────────────────────
   {
-    id: "diabetes-xai",
-    title: "Explainable AI for Diabetes Risk",
-    subtitle: "Interpretable Healthcare Decision Systems",
-    category: "Machine Learning / Clinical Tech",
-    projectType: "ai",
-    year: "2025",
-    description: "Integrated risk factor prediction using interpretable ML networks tailored specifically for low-resource regional clinics.",
-    longDescription: "Developed and commercialized an Explainable AI (XAI) clinical prototype that empowers community physicians to predict high-incidence diabetes risks. Utilizing state-of-the-art SHAP (SHapley Additive exPlanations) values and local surrogate tree classifiers, the system turns opaque neural risk predictions into clear, visual, action-ready insights regarding patient biometrics.",
-    tags: ["Python", "XAI / SHAP", "Scikit-Learn", "FastAPI", "React", "D3.js"],
-    image: "/src/assets/images/medical_ai_display_1780197943001.png",
-    accentColor: "emerald",
-    metrics: [
-      { label: "Accuracy", value: "96.4%" },
-      { label: "SHAP Latency", value: "<15ms" },
-      { label: "Clinical Utility", value: "A Grade" }
-    ]
+    id: 'solara-sands-resort',
+    title: 'Solara Sands Resort',
+    category: 'web',
+    year: '2025',
+    summary: 'Luxury resort website with a cinematic hero, suites, amenities and a booking-first layout.',
+    description:
+      'A polished, fully responsive marketing website for a luxury resort. A cinematic hero, room and amenity showcases and a booking-focused structure, with smooth scroll animations and fast delivery on Vercel.',
+    image: '/images/work/solara-sands-resort.webp',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Motion', 'Vercel'],
+    liveUrl: 'https://solara-sands-resort.vercel.app/',
+    featured: true,
   },
   {
-    id: "khmer-ocr",
-    title: "Deep Khmer OCR System",
-    subtitle: "Deep Neural Optical Character Recognition",
-    category: "Computer Vision / Deep Learning",
-    projectType: "ai",
-    year: "2024",
-    description: "A specialized deep learning OCR engine for the complex Khmer script, with custom visual character segmentation strategies.",
-    longDescription: "Engineered a production-ready Optical Character Recognition (OCR) framework targeting historical and handwritten Khmer texts. Designed a novel visual character segmentation pipeline combining U-Net pixel-wise contours with traditional projection profile analyses, raising transcription accuracies across high-bleed, low-contrast historical parchment scans.",
-    tags: ["PyTorch", "OpenCV", "CUDA Engine", "TypeScript", "TailwindCSS"],
-    image: "/src/assets/images/text_ocr_display_1780197926426.png",
-    accentColor: "amber",
-    metrics: [
-      { label: "Segment Delta", value: "94.6%" },
-      { label: "CUDA Speedup", value: "3.4x" },
-      { label: "Training Epochs", value: "240" }
-    ]
+    id: 'novahq',
+    title: 'NovaHQ',
+    category: 'web',
+    year: '2025',
+    summary: 'Premium website for a business-center development, with editorial type and cinematic imagery.',
+    description:
+      'An immersive marketing website for NovaHQ, a Class A business center. Elegant editorial typography, cinematic photography and layered scroll reveals present the towers, offices and amenities. Fully responsive and deployed on Vercel.',
+    image: '/images/work/novahq.webp',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Motion', 'Vercel'],
+    liveUrl: 'https://novahq-livid.vercel.app/',
+    featured: true,
   },
   {
-    id: "kb-rag",
-    title: "AI Knowledge Base Chatbot",
-    subtitle: "Local-First Enterprise Retrieval-Engine",
-    category: "NLP & Retrieval-Augmented Generation",
-    projectType: "ai",
-    year: "2025",
-    description: "A private, zero-leak enterprise knowledge search pipeline using secure local-first vector quantization and Gemini APIs.",
-    longDescription: "Designed an air-gapped enterprise search proxy combining highly compressed sparse-dense vector retrievers with Gemini's reasoning layers. Created dynamic document chunking strategies and self-correcting query pipelines to achieve high-fidelity corporate search answers with verifiable origin citation badges.",
-    tags: ["LlamaIndex", "Gemini Pro", "ChromaDB", "NodeJS", "Express"],
-    image: "https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&w=600&q=80",
-    accentColor: "sky",
-    metrics: [
-      { label: "Retrieval Recall", value: "98.2%" },
-      { label: "Context Window", value: "128K" },
-      { label: "Halving Error", value: "11x" }
-    ]
+    id: 'oceanhire',
+    title: 'OceanHire',
+    category: 'web',
+    year: '2025',
+    summary: 'Recruitment website for maritime and cruise careers.',
+    description:
+      'A recruitment website that connects skilled professionals with cruise lines and shipping companies. Clear calls to action, department overviews, an application section, FAQ and contact. Fully responsive and deployed on Vercel.',
+    image: '/images/work/oceanhire.webp',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+    liveUrl: 'https://novahq-fzwo.vercel.app/',
   },
   {
-    id: "design-sandbox",
-    title: "Interactive Exhibition Sandbox",
-    subtitle: "Visual Merchandising & Curation Logic Engine",
-    category: "Spatial Design / Interaction CSS",
-    projectType: "design",
-    year: "2025",
-    description: "An advanced, interactive visual merchandising display curator that maps physical layout proportions with mathematical harmony.",
-    longDescription: "Styled on elegant Swiss grids and Japanese minimalist space layouts (Pearl Idea inspired), this interactive design platform lets curators drag, drop, and configure museum-grade pedestals, lighting sources, and display screens using physical dimensions mapped smoothly inside React states.",
-    tags: ["Framer Motion", "React Hooks", "Boutique Styling", "Tailwind CSS"],
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
-    accentColor: "amber",
-    metrics: [
-      { label: "Proportions", value: "Perfect Phi" },
-      { label: "Render Time", value: "<8ms" },
-      { label: "Layout Elements", value: "15+ Types" }
-    ]
+    id: 'exhibition-sandbox',
+    title: 'Exhibition Sandbox',
+    category: 'web',
+    year: '2025',
+    summary: 'Interactive tool for planning retail and museum displays, with AI-generated layouts.',
+    description:
+      'A visual-merchandising playground inspired by Japanese minimalist display design. Curators arrange pedestals, lights and screens on a floor plan, and Gemini can suggest a complete exhibition layout, including lighting mood, colour palette and curator notes.',
+    image: '/images/work/exhibition-sandbox.webp',
+    tags: ['React', 'Motion', 'Tailwind CSS', 'Gemini API'],
   },
-  {
-    id: "pearl-editorial",
-    title: "Minimalist Brand Curation & Editorial Typo",
-    subtitle: "High-Contrast Luxury Guidelines",
-    category: "Brand Curation / Graphic Design",
-    projectType: "design",
-    year: "2024",
-    description: "A physical catalog and design asset package utilizing Swiss-school grids, generous negative space, and Japanese text hierarchies.",
-    longDescription: "Formulated a custom design system centered on high-contrast display serif typography paired with strict hairline borders and elegant off-white canvas values. Deployed dynamic, scale-invariant text systems that look flawless from mobile feeds up to grand physical poster grids.",
-    tags: ["Typography", "Grid Systems", "Vector Assets", "Brand Book"],
-    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80",
-    accentColor: "zinc",
-    metrics: [
-      { label: "Font Combiners", value: "3 Core" },
-      { label: "Grid Alignment", value: "Strict Swiss" },
-      { label: "Color Palette", value: "Dual Tone" }
-    ]
-  },
-  {
-    id: "solara-sands-resort",
-    title: "Solara Sands Resort",
-    subtitle: "Luxury Hospitality Web Experience",
-    category: "Web Application / Frontend",
-    projectType: "webdev",
-    year: "2025",
-    description: "A polished, fully responsive marketing and booking website for a luxury beachfront resort, built and deployed on Vercel.",
-    longDescription: "Designed and shipped an immersive front-of-house web experience for a luxury sands resort. Features a cinematic hero, room and amenity showcases, and a clean booking-oriented information architecture with motion-driven scroll interactions, all optimized for fast global edge delivery on Vercel.",
-    tags: ["React", "TypeScript", "Tailwind CSS", "Motion", "Vercel"],
-    image: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=600&q=80",
-    accentColor: "amber",
-    liveUrl: "https://solara-sands-resort.vercel.app/",
-    metrics: [
-      { label: "Deployment", value: "Vercel Edge" },
-      { label: "Responsive", value: "100%" },
-      { label: "Lighthouse", value: "A Grade" }
-    ]
-  },
-  {
-    id: "novahq-platform",
-    title: "NovaHQ Workspace Platform",
-    subtitle: "SaaS Operations Dashboard — Work in Progress",
-    category: "Web Application / Frontend",
-    projectType: "webdev",
-    year: "2025",
-    description: "An early-stage SaaS workspace dashboard, currently iterating on layout and visual design, deployed on Vercel.",
-    longDescription: "An in-progress build of NovaHQ, a team operations platform. The core layout, feature sections, and routing are in place, with active iteration on the visual design and interaction polish. Deployed continuously to Vercel as the design matures.",
-    tags: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80",
-    accentColor: "sky",
-    liveUrl: "https://novahq-fzwo.vercel.app/",
-    metrics: [
-      { label: "Status", value: "In Progress" },
-      { label: "Deployment", value: "Vercel" },
-      { label: "Design", value: "Iterating" }
-    ]
-  },
-  {
-    id: "novahq-studio",
-    title: "NovaHQ Studio",
-    subtitle: "Product Marketing & Brand Experience",
-    category: "Web Application / Frontend",
-    projectType: "webdev",
-    year: "2025",
-    description: "A refined marketing companion site for the NovaHQ brand, showcasing product storytelling with cinematic motion, deployed on Vercel.",
-    longDescription: "Built an immersive brand and product storytelling experience for NovaHQ Studio. Combines bold editorial typography, layered scroll reveals, and a clean component-driven layout to communicate product value, all engineered for crisp responsiveness and fast edge delivery on Vercel.",
-    tags: ["React", "TypeScript", "Tailwind CSS", "Motion", "Vercel"],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
-    accentColor: "emerald",
-    liveUrl: "https://novahq-livid.vercel.app/",
-    metrics: [
-      { label: "Deployment", value: "Vercel Edge" },
-      { label: "Responsive", value: "100%" },
-      { label: "Lighthouse", value: "A Grade" }
-    ]
-  },
-];
 
-export const SKILL_CATEGORIES: SkillCategory[] = [
+  // ── AI ───────────────────────────────────────────────────────────────
   {
-    id: "programming-ai",
-    title: "Programming & Intelligent Automation",
-    description: "The core stack used to design models, parse multidimensional spaces, and script intelligent microservices.",
-    skills: [
-      { name: "Python / PyTorch", level: 92, description: "Advanced deep learning architecture modeling & tensor workflows." },
-      { name: "TypeScript / ESM Node", level: 95, description: "Production full-stack service deployment." },
-      { name: "SQL & Relational Logic", level: 88, description: "Complex recursive schemas & query optimization." },
-      { name: "Scikit-Learn & Math Specs", level: 90, description: "Statistical machine learning, regression, clustering models." }
-    ]
+    id: 'diabetes-xai',
+    title: 'Explainable AI for Diabetes Risk',
+    category: 'ai',
+    year: '2025',
+    summary: 'Interpretable machine learning that predicts diabetes risk and shows doctors why.',
+    description:
+      'A clinical decision-support prototype for community clinics. It predicts diabetes risk and uses SHAP explanations to turn each prediction into clear, visual insights about the patient’s biometrics, so doctors can see exactly why a risk score is high.',
+    image: '/images/work/diabetes-xai-app.webp',
+    tags: ['Python', 'SHAP / XAI', 'Scikit-learn', 'FastAPI', 'React', 'D3.js'],
+    metrics: [
+      { label: 'Accuracy', value: '96.4%' },
+      { label: 'SHAP latency', value: '<15 ms' },
+    ],
+    featured: true,
   },
   {
-    id: "web-dev",
-    title: "Sleek Web Construction & Visual Merchandising",
-    description: "Creating highly visual, crisp, structural user interfaces matching Swiss grid and luxury design guidelines.",
-    skills: [
-      { name: "React 19 & Vite Engine", level: 96, description: "Asynchronous component design and hook architectures." },
-      { name: "Tailwind CSS & Spatial Grids", level: 98, description: "Flawless screen padding and micro-interaction margins." },
-      { name: "Motion (React Animation)", level: 92, description: "Staggered transitions and cinematic page scroll events." },
-      { name: "D3.js / WebGL Visualizers", level: 85, description: "Scientific canvas plotting and dynamic coordinate grids." }
-    ]
+    id: 'khmer-ocr',
+    title: 'Deep Khmer OCR',
+    category: 'ai',
+    year: '2024',
+    summary: 'Deep learning OCR for the complex Khmer script: printed, handwritten and historical scans.',
+    description:
+      'An OCR pipeline built for Khmer text, including handwritten and historical documents. It combines U-Net segmentation with projection-profile analysis to separate stacked glyphs, improving accuracy on low-contrast and damaged scans.',
+    image: '/images/work/khmer-ocr-scan.webp',
+    tags: ['PyTorch', 'OpenCV', 'CUDA', 'TypeScript'],
+    metrics: [
+      { label: 'Segmentation', value: '94.6%' },
+      { label: 'CUDA speed-up', value: '3.4×' },
+    ],
+    featured: true,
   },
   {
-    id: "data-infra",
-    title: "Enterprise Infrastructure & Scalability",
-    description: "Handling multi-gigabyte transaction streams without data gaps or replication bottlenecks.",
-    skills: [
-      { name: "PostgreSQL & Vector Indexes", level: 90, description: "Transactional stability and high-dimension search embedding." },
-      { name: "Docker & Docker Compose", level: 88, description: "Standardized containerization and localized micro-networks." },
-      { name: "Apache Airflow / DBT pipelines", level: 84, description: "Scalable directed acyclic graphs for data extraction." },
-      { name: "Google Cloud Platform", level: 86, description: "Cloud Run containers and serverless IAM governance." }
-    ]
-  }
-];
+    id: 'knowledge-base-chatbot',
+    title: 'AI Knowledge Base Chatbot',
+    category: 'ai',
+    year: '2025',
+    summary: 'Private, local-first RAG assistant that answers company questions with cited sources.',
+    description:
+      'An enterprise knowledge assistant that pairs local vector search with Gemini’s reasoning. Smart document chunking and self-correcting queries deliver accurate answers with source citations, while company data stays private.',
+    image: '/images/work/knowledge-base-chatbot.webp',
+    tags: ['LlamaIndex', 'Gemini', 'ChromaDB', 'Node.js', 'Express'],
+    metrics: [
+      { label: 'Retrieval recall', value: '98.2%' },
+      { label: 'Context window', value: '128K' },
+    ],
+  },
 
-export const RESEARCH_PAPERS: ResearchPaper[] = [
+  // ── Branding ─────────────────────────────────────────────────────────
   {
-    id: "diabetes-predict-low-resource",
-    title: "Explainable AI for Diabetes Risk Prediction in Low-Resource Settings",
-    question: "How do we deploy deep classifier confidence and interpretable surrogate models into areas lacking broadband, high-tier hardware, or advanced specialist clinicians?",
-    abstract: "This paper outlines a localized decision support system leveraging lightweight Tree-ensembles and SHAP algorithms. By compressing modeling structures to execute clientside inside local tablets without network connection, we maintain premium clinical classification accuracies (>95%) while outputting human-readable tree structures explaining specific warning boundaries.",
-    venue: "Journal of Medical Systems & Digital Health",
-    year: "2025",
-    tags: ["XAI", "Tree-Ensembles", "Clinical UX", "Low-Resource Systems"]
+    id: 'cafe-bean-harmony',
+    title: 'Cafe Bean Harmony',
+    category: 'branding',
+    year: '2026',
+    summary: 'Warm coffee-shop identity: cup, steam and leaves in one circular mark.',
+    description:
+      'Logo design for Cafe Bean Harmony. The circular mark brings together a coffee cup, rising steam and coffee leaves, symbolising warmth, aroma and the quality of the beans.',
+    image: '/images/work/cafe-bean-harmony.webp',
+    cover: '/images/work/cafe-bean-harmony-cover.webp',
+    gallery: ['/images/work/cafe-bean-harmony-mark.webp', '/images/work/cafe-bean-harmony-story.webp'],
+    tags: ['Logo', 'Brand identity', 'Mockups'],
+    featured: true,
   },
   {
-    id: "khmer-ocr-segmentation",
-    title: "Segmentation Strategies for Khmer OCR: A Comparative Study of DL and Heuristic Approaches",
-    question: "Can hybrid projection heuristic algorithms resolve text bleed and compound character stacking boundaries in medieval character scans?",
-    abstract: "Khmer script is highly sophisticated, utilizing sub-characters, baseline vowels, and complex vertical glyph piles. This study conducts an exhaustive architectural comparative matrix between full-pixel neural net segmenters (U-Net) and coordinate bounding-box projections. We introduce a hybrid projection-bounding segmenter which reduces word bleed-over by 14.2% while consuming 40% less memory.",
-    venue: "Indo-China NLP Symposium & Archive",
-    year: "2024",
-    tags: ["OCR", "Computer Vision", "Khmer Script", "Document Analysis"]
-  }
-];
+    id: 'arcwave',
+    title: 'ArcWave Solution',
+    category: 'branding',
+    year: '2025',
+    summary: 'Bold, forward-moving logo built on a precise construction grid.',
+    description:
+      'Brand identity for ArcWave Solution. The arrow-like mark is drawn on a strict circular grid and works in colour, black and reverse. Shown here on stationery and storefront signage.',
+    image: '/images/work/arcwave.webp',
+    cover: '/images/work/arcwave-cover.webp',
+    gallery: [
+      '/images/work/arcwave-logo.webp',
+      '/images/work/arcwave-grid.webp',
+      '/images/work/arcwave-mono.webp',
+      '/images/work/arcwave-paper.webp',
+    ],
+    tags: ['Logo', 'Brand identity', 'Grid system', 'Signage'],
+    featured: true,
+  },
+  {
+    id: 'bespire',
+    title: 'BeSpire',
+    category: 'branding',
+    year: '2025',
+    summary: 'Identity for BeSpire, a business growth & strategy platform.',
+    description:
+      'Logo and brand guidelines for BeSpire, a business growth and strategy platform. A geometric mark, a defined colour palette and a construction grid keep the brand consistent across web and mobile.',
+    image: '/images/work/bespire.webp',
+    cover: '/images/work/bespire-cover.webp',
+    gallery: ['/images/work/bespire-guide.webp', '/images/work/bespire-grid.webp'],
+    tags: ['Logo', 'Brand guidelines', 'Colour palette'],
+  },
+  {
+    id: 'rumduol',
+    title: 'Rumduol',
+    category: 'branding',
+    year: '2024',
+    summary: 'Identity inspired by the Rumduol, Cambodia’s national flower.',
+    description:
+      'A brand identity inspired by the Rumduol flower: soft botanical shapes, warm yellows and refined typography, applied across stationery and print.',
+    image: '/images/work/rumduol.webp',
+    cover: '/images/work/rumduol-cover.webp',
+    tags: ['Logo', 'Brand identity', 'Stationery'],
+  },
+  {
+    id: 'editorial-brand-system',
+    title: 'Editorial Brand System',
+    category: 'branding',
+    year: '2024',
+    summary: 'Catalogue and brand assets built on Swiss grids, white space and a clear type hierarchy.',
+    description:
+      'A design system for a printed catalogue and brand-asset package: high-contrast typography, hairline rules, generous white space and a strict grid that scales from mobile posts to large posters.',
+    tags: ['Typography', 'Grid systems', 'Brand book'],
+  },
 
-export const TIMELINE: TimelineEvent[] = [
+  // ── Posters ──────────────────────────────────────────────────────────
   {
-    year: "2026",
-    title: "Khmer OCR Research Pipeline",
-    role: "Computer Vision Research Assistant / Lead Developer",
-    organization: "Academic NLP Laboratories",
-    description: "Leading deep learning experiments for Khmer script layout analysis, handwritten and printed text recognition, and OCR performance on complex layouts and degraded scans.",
-    highlights: [
-      { label: "Problem", value: "Khmer OCR must handle stacked glyphs, mixed handwriting, printed text, and damaged document scans." },
-      { label: "Solution", value: "Built segmentation and recognition experiments using deep learning and image preprocessing pipelines." },
-      { label: "Impact", value: "Advancing a specialized OCR pipeline for Khmer documents and low-quality historical scans." }
-    ],
-    tech: ["Python", "PyTorch", "OpenCV", "OCR"]
+    id: 'poster-victory-day',
+    title: 'Victory Over Genocide Day',
+    category: 'poster',
+    year: '2026',
+    summary: 'Commemorative poster for the 47th anniversary of 7 January.',
+    description:
+      'A commemorative poster for the 47th anniversary of Victory Over Genocide Day (7 January 1979 – 2026), with bilingual Khmer–English typography, the national colours and doves of peace.',
+    image: '/images/work/poster-victory-day.webp',
+    cover: '/images/work/poster-victory-day-cover.webp',
+    tags: ['Poster', 'Khmer typography', 'Social media'],
   },
   {
-    year: "2024-2025",
-    title: "Web Application Development",
-    role: "Full-Stack Developer / Software Engineer",
-    organization: "Independent Projects & Client Builds",
-    description: "Built responsive frontend architectures, dashboard modules, full-stack platforms, and backend APIs for business-facing web applications.",
-    highlights: [
-      { label: "Problem", value: "Teams needed polished web apps that were responsive, maintainable, and connected to real data flows." },
-      { label: "Solution", value: "Developed React interfaces, reusable modules, REST APIs, and deployment-ready full-stack systems." },
-      { label: "Impact", value: "Delivered portfolio-ready web platforms, dashboards, and production-style application workflows." }
-    ],
-    tech: ["React", "TypeScript", "Node.js", "REST APIs"]
+    id: 'poster-coffee',
+    title: 'Another Cup of Coffee',
+    category: 'poster',
+    year: '2025',
+    summary: 'Product poster for a coffee brand, made with Adobe Firefly and Photoshop.',
+    description:
+      '“Another day, another cup of coffee.” A product poster for a coffee brand, with cups on natural stone, warm light and minimal type. Created with Adobe Firefly and Adobe Photoshop.',
+    image: '/images/work/poster-coffee.webp',
+    cover: '/images/work/poster-coffee-cover.webp',
+    tags: ['Poster', 'Adobe Firefly', 'Photoshop'],
   },
   {
-    year: "2023",
-    title: "Face Recognition System",
-    role: "Computer Vision Engineer / Researcher",
-    organization: "Computer Vision Research Projects",
-    description: "Built an early face recognition pipeline that introduced facial detection, feature extraction, embedding comparison, and recognition-oriented model workflows.",
-    highlights: [
-      { label: "Problem", value: "Recognition systems need stable face detection and reliable identity matching across varied inputs." },
-      { label: "Solution", value: "Experimented with detection, preprocessing, feature extraction, and embedding-based comparisons." },
-      { label: "Impact", value: "Established the computer vision foundation that later supported OCR and document intelligence work." }
-    ],
-    tech: ["OpenCV", "Python", "Embeddings", "Face Detection"]
-  }
+    id: 'poster-womens-day',
+    title: 'International Women’s Day',
+    category: 'poster',
+    year: '2025',
+    summary: 'Poster celebrating the strength and achievements of women.',
+    description:
+      'A poster for International Women’s Day (8 March), with soft pinks, botanical line art and elegant type honouring the strength and achievements of women.',
+    image: '/images/work/poster-womens-day.webp',
+    cover: '/images/work/poster-womens-day-cover.webp',
+    tags: ['Poster', 'Illustration', 'Social media'],
+  },
+  {
+    id: 'poster-coronation-day',
+    title: 'Coronation Day',
+    category: 'poster',
+    year: '2024',
+    summary: 'Poster for the 20th anniversary of King Norodom Sihamoni’s coronation.',
+    description:
+      'A celebratory poster for the 20th anniversary of the coronation of His Majesty King Norodom Sihamoni, with warm golden light, the royal coat of arms and formal Khmer typography.',
+    image: '/images/work/poster-coronation-day.webp',
+    cover: '/images/work/poster-coronation-day-cover.webp',
+    tags: ['Poster', 'Khmer typography', 'Photo compositing'],
+  },
+  {
+    id: 'poster-pchum-ben',
+    title: 'Pchum Ben Festival',
+    category: 'poster',
+    year: '2024',
+    summary: 'Festival poster for Pchum Ben, the Khmer ancestors’ day.',
+    description:
+      'A poster for Pchum Ben, the Khmer festival honouring ancestors, with traditional offerings, lotus flowers and bright festive Khmer lettering.',
+    image: '/images/work/poster-pchum-ben.webp',
+    cover: '/images/work/poster-pchum-ben-cover.webp',
+    tags: ['Poster', 'Khmer typography', 'Photo compositing'],
+  },
 ];
